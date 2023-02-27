@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.1.2'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
@@ -14,6 +14,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'turbo-rails'
+gem 'devise'
 
 # gem 'sassc-rails'
 # gem 'image_processing', '~> 1.2'
