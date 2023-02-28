@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_170038) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_174404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_170038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_training_programs_on_title", unique: true
+  end
+
+  create_table "user_programs", force: :cascade do |t|
+    t.boolean "completed", default: false, null: false
+    t.datetime "notice_time"
+    t.bigint "user_id", null: false
+    t.bigint "training_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_program_id"], name: "index_user_programs_on_training_program_id"
+    t.index ["user_id"], name: "index_user_programs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_170038) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "user_programs", "training_programs"
+  add_foreign_key "user_programs", "users"
 end
