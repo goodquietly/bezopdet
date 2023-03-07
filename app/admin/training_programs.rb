@@ -1,18 +1,42 @@
 ActiveAdmin.register TrainingProgram do
+  permit_params :title, :url, :published
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :title, :url, :published
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:title, :url, :published]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  scope :all
+  scope :published
+  scope :unpublished
+
+  form do |_f|
+    inputs 'Details' do
+      input :title
+      input :url
+      input :published
+    end
+    actions
+  end
+
+  action_item :publish, only: :show do
+    unless training_program.published?
+      link_to 'Publish', publish_admin_training_program_path(training_program),
+              method: :put
+    end
+  end
+
+  action_item :unpublish, only: :show do
+    if training_program.published?
+      link_to 'Unpublish', unpublish_admin_training_program_path(training_program),
+              method: :put
+    end
+  end
+
+  member_action :publish, method: :put do
+    program = TrainingProgram.find(params[:id])
+    program.update(published: true)
+    redirect_to admin_training_program_path(program)
+  end
+
+  member_action :unpublish, method: :put do
+    program = TrainingProgram.find(params[:id])
+    program.update(published: false)
+    redirect_to admin_training_program_path(program)
+  end
 end

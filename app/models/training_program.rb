@@ -5,4 +5,7 @@ class TrainingProgram < ApplicationRecord
 
   has_many :user_programs, dependent: :destroy
   has_many :users, through: :user_programs
+
+  scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 end
