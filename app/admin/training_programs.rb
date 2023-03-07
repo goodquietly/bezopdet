@@ -5,11 +5,11 @@ ActiveAdmin.register TrainingProgram do
   scope :published
   scope :unpublished
 
-  form do |_f|
+  form do |f|
     inputs 'Details' do
-      input :title
-      input :url
-      input :published
+      f.input :title
+      f.input :url
+      f.input :published
     end
     actions
   end
