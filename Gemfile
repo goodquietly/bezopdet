@@ -24,5 +24,6 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'byebug'
+  gem 'letter_opener'
   gem 'pry-rails'
 end

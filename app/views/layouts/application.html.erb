@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ProgramsForChildren</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html class="h-100">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+<head>
+  <title>TaskManager</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
 
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>    
+<body class="d-flex flex-column h-100">
 
-    <%= yield %>
-  </body>
+  <%= render "partials/navbar" %>
+  
+  <main class="flex-shrink-0 pt-5 my-auto">
+    <div class="container">
+      <%= yield %></div>
+    </div>
+  </main>
+  <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container">
+        <span class="text-light">TaskManager</span>
+      </div>
+    </footer>  
+</body>
+
 </html>
