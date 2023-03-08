@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :trackable, :lockable
 
   before_save :capitalize_name
+  after_save_commit :create_user_program, on: :create
 
   validates :first_name, presence: true, length: { maximum: 35 }
   validates :last_name, presence: true, length: { maximum: 35 }
@@ -24,6 +25,14 @@ class User < ApplicationRecord
   end
 
   private
+
+  def create_user_program
+    programs = TrainingProgram.published
+
+    programs.map do |program|
+      UserProgram.find_or_create_by(user_id: id, training_program_id: program.id)
+    end
+  end
 
   def capitalize_name
     first_name&.capitalize!
