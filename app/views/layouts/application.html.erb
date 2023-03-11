@@ -9,22 +9,25 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= javascript_include_tag "turbo", type: "module" %>
 </head>
 
 <body class="d-flex flex-column h-100">
 
   <%= render "partials/navbar" %>
   
+
+  
   <main class="flex-shrink-0 pt-5 my-auto">
     <div class="container">
-      <%= yield %></div>
+      <%= yield %>
     </div>
   </main>
   <footer class="footer mt-auto py-3 bg-dark">
-      <div class="container">
-        <span class="text-light">TaskManager</span>
-      </div>
-    </footer>  
+    <div class="container">
+      <span class="text-light">TaskManager</span>
+    </div>
+  </footer>  
 </body>
 
 </html>
