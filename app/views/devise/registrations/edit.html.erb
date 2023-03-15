@@ -1,0 +1,104 @@
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Edit <%= resource_name.to_s.humanize %></h2>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
+              html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <%= f.text_field :first_name, autofocus: true, autocomplete: "First name", 
+                      placeholder: 'First name', id: "floatingInput", class: "form-control" %>
+                  <%= f.label :first_name, for: "floatingInput" %>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name", 
+                      placeholder: 'Last name', id: "floatingInput", class: "form-control" %>
+                  <%= f.label :last_name, for: "floatingInput" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <p><%= f.label :birthday %></p>
+              <%= f.date_select(:birthday, { 
+                                start_year: Time.now.year - 15, 
+                                end_year: Time.now.year, 
+                                prompt: true, 
+                                order: [:day, :month, :year] 
+                                } ) %>
+            </div>
+
+            <div class="form-floating mb-3">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+                  placeholder: 'Enter email', id: "floatingInput", class: "form-control" %>
+              <%= f.label :email, for: "floatingInput" %>
+            </div>
+
+            <div class="form-floating mb-3">              
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", 
+                   id: "floatingPassword", placeholder: 'Password (6 characters minimum)' %>
+                   <%= f.label :password, for: "floatingPassword" %>                   
+            </div>
+
+            <div class="form-floating mb-3">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", 
+                class: "form-control", id: "floatingPassword", 
+                placeholder: 'Password (6 characters minimum)' %>
+              <%= f.label :password_confirmation, for: "floatingPassword" %>
+            </div>
+
+            <div class="form-floating mb-3">
+              <%= f.password_field :current_password, class: "form-control", id: "floatingPassword", 
+                  placeholder: 'Enter password' %>
+              <%= f.label :current_password, for: "floatingPassword" %>
+            </div>
+
+            <div class='d-grid gap-2'>
+              <%= f.submit 'Update', class: 'btn btn-secondary btn-block mb-4' %>
+            </div>
+            <% end %>
+
+            <h3>Cancel my account</h3>
+            <p>Unhappy?</p>
+            <div class='d-grid gap-2'>
+              <%= link_to "Cancel my account", registration_path(resource_name), 
+                class: "btn btn-secondary btn-block mb-4", 
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Back", :back, class: "btn btn-primary btn-block mb-4"     %> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" 
+          class="w-100 rounded-4 shadow-4" alt="" />
+      </div>
+    </div>
+  </div>
+</section>

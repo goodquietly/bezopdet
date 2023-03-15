@@ -1,0 +1,55 @@
+<section class="mx-auto">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+          alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <h2 class="text-center mb-4">Log in</h2>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+
+          <div class="form-floating mb-0">
+            <%= f.email_field :email, autofocus: true, class: 'form-control form-control-lg', id: 'floatingInput', 
+                placeholder: 'name@example.com', autocomplete: "email" %>
+            <%= f.label :email, for: "floatingInput",  class: "form-label" %><br />
+          </div>
+
+          <div class="form-floating mb-3">
+            <%= f.password_field :password, autocomplete: "current-password", 
+              class: "form-control form-control-lg", id: "floatingPassword", placeholder: "Enter password" %>
+            <%= f.label :password, for: "floatingPassword", class: "form-label" %>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <% if devise_mapping.rememberable? %>
+              <div class="mb-0 form-check">
+                <%= f.check_box :remember_me, checked: true, class: "form-check-input me-2", type: "checkbox",
+                    value: "", id: "flexCheckChecked", checked: true %>
+                <%= f.label :remember_me, class: "form-check-label", for: "flexCheckChecked" %>
+              </div>
+            <% end %>
+
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-body" %><br />
+            <% end %>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <%= f.submit "Login", class: "btn btn-primary btn-lg", style: "padding-left: 2.5rem; padding-right: 2.5rem;" %>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
+
+              <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Register", new_registration_path(resource_name), class: "link-danger" %><br />
+              <% end %>
+
+            </p>
+          </div>
+
+          <%= render "devise/shared/links" %>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>
