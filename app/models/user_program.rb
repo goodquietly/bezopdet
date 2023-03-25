@@ -5,4 +5,8 @@ class UserProgram < ApplicationRecord
 
   belongs_to :user
   belongs_to :training_program
+
+  def start_time
+    notice_time
+  end
 end
