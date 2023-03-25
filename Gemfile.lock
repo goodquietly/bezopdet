@@ -275,7 +275,6 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  tzinfo-data
 
 RUBY VERSION
    ruby 3.1.2p20

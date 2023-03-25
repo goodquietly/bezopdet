@@ -17,7 +17,6 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
-gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'turbo-rails'
 
 # gem 'image_processing', '~> 1.2'
@@ -25,5 +24,5 @@ gem 'turbo-rails'
 group :development, :test do
   gem 'byebug'
   gem 'letter_opener'
-  gem 'pry-rails'
+  # gem 'pry-rails'
 end
