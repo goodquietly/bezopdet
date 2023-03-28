@@ -1,0 +1,18 @@
+<main>
+  <div class="m-1 mb-4 rounded-3">
+    <div class="container-fluid py-5 row text-center justify-content-center">
+      <div class="col-md-6">
+        <%= image_tag('childs-2.jpg', class: 'img-fluid') %>
+      </div>
+      <div class="col-md-6 d-flex text-center">
+        <div class="flex-fill">
+        <%= render @user_program %>
+
+        <%= button_to "Установить напоминание", edit_user_program_path(@user_program), class: 'btn btn-info mt-3', method: :get %>
+
+        <%= button_to "В личный кабинет", user_path, class: 'btn btn-info mt-3', method: :get %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

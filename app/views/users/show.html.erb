@@ -1,1 +1,77 @@
-Hello world!
+<main>
+  <div class="m-1 mb-4 rounded-3">
+    <div class="container-fluid pt-5 row text-center justify-content-center">
+      <div class="col-md-6">
+        <h3 class="shadow p-3 mb-5 bg-body rounded">Ваш ребенок</h3>
+        <div class="card mb-5">
+          <div class="flex-shrink-0">
+            <%= image_tag('childs.jpg', class: 'img-fluid') %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-info"><%= @user.full_name %>, <%= @user.age %> лет</h5>
+            <div class="d-flex align-content-center flex-wrap rounded-3 p-2 mb-2"
+                 style="background-color: <%= protection_color(@user_programs) %>;">
+              <div class="px-3 p-2 flex-fill">
+                <p class="small text-muted mb-1">Активности</p>
+                <p class="mb-0"><%= @programs.size %></p>
+              </div>
+              <div class="px-3 p-2 flex-fill">
+                <p class="small text-muted mb-1">Защищенность</p>
+                <p class="mb-0"><%= child_protection(@user_programs) %> %</p>
+              </div>
+              <div class="px-3 p-2 flex-fill">
+                <p class="small text-muted mb-1">Уровень</p>
+                <p class="mb-0"><%= protection_raiting(@user_programs) %></p>
+              </div>
+            </div>
+            <div class="d-flex pt-1">
+              <button type="button" class="btn btn-outline-info flex-grow-1">Сформировать паспорт безопасности</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="shadow p-3 mb-5 bg-body rounded">Персональный календарь</h3>
+
+        <%= month_calendar(events: @notices) do |date, notices| %>
+        <div class='day'>
+          <%= date.day %>
+        </div>
+        <div class="list-group">
+          <% notices.each do |notice| %>
+          <%= link_to notice.start_time.strftime('%H:%M'), user_program_path(notice), 
+                    title: notice.training_program.title, 
+                    class: "list-group-item p-0 list-group-item-action list-group-item-#{random_bootstrap_colors}" %>
+          <% end %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-md-stretch rounded-3 justify-content-center">
+    <h3 class="shadow p-3 bg-body rounded text-center p-1 col-md-10 mx-3">Методики и другие активности</h3>
+
+    <% @user_programs.map do |program| %>
+    <div class="col-md-6 my-4">
+      <div class="h-100 p-5
+
+                   <% if program.completed? %>  
+                     text-bg-success
+                   <% else %>
+                     text-bg-danger
+                   <% end %>
+
+                   rounded-3">
+        <h2><%= program.training_program.title %></h2>
+        <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix
+          and match with additional component themes and more.</p>
+        <%= button_to 'Перейти к программе', user_program_path(program), method: :get, class: "btn btn-outline-light" %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</main>
