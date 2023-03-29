@@ -16,11 +16,6 @@ class UserProgramsController < ApplicationController
 
   def show; end
 
-  def index
-    @user = current_user
-    @programs = @user.training_programs
-  end
-
   def complete
     @user_program.update_columns(completed: true, notice_time: nil)
 
@@ -30,7 +25,7 @@ class UserProgramsController < ApplicationController
   private
 
   def set_user_program
-    @user_program ||= UserProgram.find(params[:id])
+    @user_program ||= authorize UserProgram.find(params[:id])
   end
 
   def user_program_params

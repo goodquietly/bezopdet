@@ -4,9 +4,12 @@
 
     <div class="d-grid gap-2">
       <%= link_to 'Ознакомиться', user_program.training_program.url , class: 'btn btn-info', target: '_blank' %>
-          <%= link_to 'Выполнено', complete_user_program_path(user_program), class: 'btn btn-info', 
+      
+      <% if policy(user_program).complete? %>
+        <%= link_to 'Выполнено', complete_user_program_path(user_program), class: 'btn btn-info', 
                            data: { turbo_method: :put, turbo_confirm: "Вы уверены, что методика усвоена?"} %>
-
+      <% end %>
+      
     </div>
 
   </div>
@@ -16,7 +19,7 @@
       <% unless user_program.notice_time.nil? %>
         <%= l(user_program.notice_time, format: :long) %>
       <% else %>
-        Не установлено  
+        Не установлено
       <% end %>
 
     </p>
