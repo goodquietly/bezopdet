@@ -3,7 +3,7 @@
     <div class='container'>
       <div class="row col-12">
         <div class="col d-flex align-items-center">
-          <div><a class="navbar-brand" href="/">Main</a></div>
+          <div><a class="navbar-brand" href="/">Главная</a></div>
           <div><button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
               aria-label="Toggle navigation">
@@ -15,21 +15,25 @@
 
               <% if user_signed_in? %>
               <li class="nav-item">
+                <%= link_to 'Личный кабинет', user_path(current_user), class: "nav-link active", 
+                                                            aria: { label: "page" } %>
+              </li>
+              <li class="nav-item">
                 <%= link_to current_user.full_name, edit_user_registration_path, class: "nav-link active", 
                                                             aria: { label: "page" } %>
               </li>              
               <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, 
+                <%= link_to "Выйти", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, 
                                                                class: "nav-link active", 
                                                                aria: { label: "page" } %>
                                                                
               </li>
               <% else %>
               <li class="nav-item">
-                <%= link_to "Sign up", new_user_registration_path, class: "nav-link active", aria: { label: "page" } %>
+                <%= link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link active", aria: { label: "page" } %>
               </li>
               <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, class: "nav-link active", aria: { label: "page" } %>
+                <%= link_to "Войти", new_user_session_path, class: "nav-link active", aria: { label: "page" } %>
               </li>
               <% end %>
             </ul>
