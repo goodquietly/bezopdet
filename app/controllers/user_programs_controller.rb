@@ -6,7 +6,7 @@ class UserProgramsController < ApplicationController
   def update
     if @user_program.update(user_program_params)
 
-      # TaskMailer.new_task(task).deliver_later
+      UserMailer.notice_time.deliver_later(@user_program)
 
       redirect_to user_program_path(@user_program), notice: 'Вы установии напоминание'
     else
@@ -18,6 +18,8 @@ class UserProgramsController < ApplicationController
 
   def complete
     @user_program.update_columns(completed: true, notice_time: nil)
+
+    UserMailer.repeat_training_program.deliver_later(@user_program)
 
     redirect_to user_program_path(@user_program), notice: 'Методика пройдена! Поздравляем!'
   end

@@ -5,6 +5,7 @@ ruby '3.1.2'
 
 gem 'activeadmin'
 gem 'bootsnap', require: false
+gem 'bootstrap-email'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'

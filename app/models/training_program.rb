@@ -30,6 +30,7 @@ class TrainingProgram < ApplicationRecord
   def create_program_for_users(users)
     users.map do |user|
       UserProgram.find_or_create_by(user_id: user.id, training_program_id: id)
+      UserMailer.new_training_program.deliver_later(user)
     end
   end
 end
