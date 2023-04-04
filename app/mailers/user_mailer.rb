@@ -13,7 +13,7 @@ class UserMailer < ApplicationMailer
     @greeting = 'Hi'
 
     bootstrap_mail(
-      to: user.email,
+      to: user.user.email,
       # from: 'from@example.com',
       subject: 'Напоминание от Безопасного детства!'
     )
@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
     @greeting = 'Hi'
 
     bootstrap_mail(
-      to: user.email,
+      to: user.user.email,
       # from: 'from@example.com',
       subject: 'Пришло время повторить активность!'
     )
