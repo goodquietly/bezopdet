@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
-  def new_training_program(user)
+  def new_training_program(program)
     @greeting = 'Hi'
 
     bootstrap_mail(
-      to: user.email,
+      to: program.user.email,
       # from: 'from@example.com',
       subject: 'Опубликована новая активность!'
     )
