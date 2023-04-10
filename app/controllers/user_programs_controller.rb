@@ -5,10 +5,7 @@ class UserProgramsController < ApplicationController
 
   def update
     if @user_program.update(user_program_params)
-
-      MailNotificationJob.set(wait: 1.minutes).perform_later(@user_program)
-
-      redirect_to user_program_path(@user_program), notice: 'Вы установии напоминание'
+      redirect_to user_program_path(@user_program), notice: 'Вы установили напоминание'
     else
       render :edit
     end
@@ -17,11 +14,10 @@ class UserProgramsController < ApplicationController
   def show; end
 
   def complete
-    @user_program.update_columns(completed: true, notice_time: nil)
+    @user_program.update_columns(completed: true, notice_time: nil, completed_at: Time.now)
 
-    ProgramRepetitionJob.set(wait: 5.minutes).perform_later(@user_program)
-
-    redirect_to user_program_path(@user_program), notice: 'Методика пройдена! Поздравляем!'
+    redirect_to user_program_path(@user_program),
+                notice: 'Методика пройдена! Поздравляем! Рекомендуем повторно пройти методику через 3 месяца'
   end
 
   private

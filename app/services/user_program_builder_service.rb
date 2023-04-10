@@ -1,25 +1,27 @@
 class UserProgramBuilderService < ApplicationService
-  def initialize(program)
-    @program = program
+  def initialize(model)
+    @model = model
   end
 
   def call
-    return create_program_for_users if @program.published?
+    return create_program_for_users if @model.instance_of? User
 
-    delete_program_for_users
+    build_program_for_users
   end
 
   private
 
-  def delete_program_for_users
-    User.all.map do |user|
-      UserProgram.destroy_by(user_id: user.id, training_program_id: @program.id)
+  def create_program_for_users
+    TrainingProgram.published.map do |program|
+      UserProgram.find_or_create_by(user_id: @model.id, training_program_id: program.id)
     end
   end
 
-  def create_program_for_users
-    User.all.map do |user|
-      program = UserProgram.find_or_create_by(user_id: user.id, training_program_id: @program.id)
+  def build_program_for_users
+    User.all.find_each do |user|
+      next UserProgram.destroy_by(user_id: user.id, training_program_id: @model.id) unless @model.published?
+
+      program = UserProgram.find_or_create_by(user_id: user.id, training_program_id: @model.id)
 
       UserMailer.new_training_program(program).deliver_later
     end
