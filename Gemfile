@@ -18,11 +18,14 @@ gem 'puma', '~> 5.0'
 gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'redis'
 gem 'sassc-rails'
+gem 'sidekiq', '~> 6.5.5'
 gem "simple_calendar", "~> 2.4"
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+gem 'whenever', require: false
 
 # gem 'image_processing', '~> 1.2'
 
