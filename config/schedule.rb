@@ -6,10 +6,6 @@ job_type :rails,
 job_type :runner, %q( cd :path && PATH=:env_path:"$PATH" bin/rails runner -e :environment ':task' :output )
 job_type :script, ' cd :path && PATH=:env_path:"$PATH" RAILS_ENV=:environment bundle exec bin/:task :output '
 
-# every 1.day, at: '8:00 am' do
-#   runner 'MailNotificationJob.perform_async'
-# end
-
-every 5.minutes do # 1.minute 1.day 1.week 1.month 1.year is also supported
+every 1.day, at: '08:00 am' do
   runner 'MailNotificationJob.perform_async'
 end
