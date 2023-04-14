@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :admin_user do
+    mount Sidekiq::Web => 'admin/sidekiq'
+  end
 
   get '/pages/:page' => 'pages#show'
 
