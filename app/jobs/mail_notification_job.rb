@@ -1,5 +1,6 @@
 class MailNotificationJob
   include Sidekiq::Job
+  sidekiq_options retry: 10, dead: false
 
   def perform(_args)
     UserProgram.find_each do |program|
