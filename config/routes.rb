@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      get 'passport'
+    end
+  end
 
   resources :user_programs do
     member do
