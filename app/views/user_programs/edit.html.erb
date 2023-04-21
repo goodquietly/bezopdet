@@ -6,6 +6,8 @@
       </div>
       <div class="col-md-7 d-flex text-center">
         <div class="flex-fill">
+          <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
+
           <%= render "form", user_program: @user_program %>
 
           <div>

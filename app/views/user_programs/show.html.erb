@@ -10,7 +10,7 @@
 
         <%= button_to "Установить напоминание", edit_user_program_path(@user_program), class: 'btn btn-info mt-3', method: :get %>
 
-        <%= button_to "В личный кабинет", user_path, class: 'btn btn-info mt-3', method: :get %>
+        <%= button_to "В личный кабинет", user_path(@user_program.user), class: 'btn btn-info mt-3', method: :get %>
         </div>
       </div>
     </div>

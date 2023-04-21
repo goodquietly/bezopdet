@@ -30,7 +30,7 @@
                 style="width: <%= child_protection(@user_programs) %>%"></div>
             </div>
             <div class="d-flex pt-1">
-              <%= link_to 'Сформировать паспорт безопасности', passport_user_path, class: 'btn btn-outline-info flex-grow-1' %>
+              <%= link_to 'Сформировать паспорт безопасности', "#{passport_user_path}.pdf", class: 'btn btn-outline-info flex-grow-1' %>
             </div>
           </div>
         </div>

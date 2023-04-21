@@ -2,16 +2,12 @@
   <%= render partial: 'partials/form_errors', locals: {model: user_program} %>
 
   <div class="form-group">
-    <%= f.label :notice_time %>
+    <%= f.label 'Напомнить' %>
     <p><%= f.datetime_select :notice_time, class: 'form-control' %></p>
   </div>
 
 
   <div class="actions mb-3">
     <%= f.submit 'Установить напоминание', class: 'btn btn-info' %>
-  </div>
-
-  <div class="actions mb-3">
-    <%= link_to t('Назад'), :back, class: 'btn btn-warning mb-3' %>
   </div>
 <% end %>
