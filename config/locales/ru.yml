@@ -18,3 +18,10 @@ ru:
         'Ноябрь',
         'Декабрь',
       ]
+  activerecord:
+    models:
+      age:
+        zero: 'Меньше года'
+        one: '%{count} год'
+        few: '%{count} года'
+        many: '%{count} лет'

@@ -8,7 +8,7 @@
             <%= image_tag('childs.jpg', class: 'img-fluid') %>
           </div>
           <div class="card-body">
-            <h5 class="card-title fs-3 text-secondary"><%= @user.full_name %>, <%= @user.age %> лет</h5>
+            <h5 class="card-title fs-3 text-secondary"><%= @user.full_name %>, <%= @user.age_to_s %></h5>
             <div class="d-flex align-content-center flex-wrap rounded-3 p-2 mb-2"
               style="background-color: <%= protection_color(@user_programs) %>;">
               <div class="px-3 p-2 flex-fill">

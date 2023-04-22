@@ -23,6 +23,10 @@ class User < ApplicationRecord
     (Time.now.to_fs(:number).to_i - birthday.to_time.to_fs(:number).to_i) / 10e9.to_i
   end
 
+  def age_to_s
+    I18n.t('activerecord.models.age', count: age)
+  end
+
   private
 
   def capitalize_name

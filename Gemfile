@@ -28,10 +28,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'whenever', require: false
 
-# gem 'image_processing', '~> 1.2'
-
 group :development, :test do
   gem 'byebug'
   gem 'letter_opener'
-  # gem 'pry-rails'
 end
