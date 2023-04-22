@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def set_user_and_programs
-    @user = authorize User.find(params[:id])
-    @user_programs = policy_scope(UserProgram)
+    @user ||= authorize User.find(params[:id])
+    @user_programs ||= policy_scope(UserProgram)
   end
 end
