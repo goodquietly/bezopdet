@@ -30,6 +30,12 @@ gem 'turbo-rails'
 gem 'whenever', require: false
 
 group :development, :test do
+  gem 'capistrano', '~> 3.17'
+  gem 'capistrano-rails', '~> 1.6'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-bundler', '~> 1.6'
+  gem 'capistrano-sidekiq'
   gem 'byebug'
   gem 'letter_opener'
 end
