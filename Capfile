@@ -29,6 +29,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rbenv'
 require 'capistrano/rails'
 require 'capistrano/passenger'
+require 'capistrano/rails/collection'
 require 'whenever/capistrano'
 
 require 'capistrano/sidekiq'
