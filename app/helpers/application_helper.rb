@@ -1,6 +1,8 @@
 module ApplicationHelper
   def child_protection(programs)
-    programs.where(completed: true).size * 100 / programs.size
+    return programs.where(completed: true).size.* 100 / programs.size if programs.present?
+
+    0
   end
 
   def protection_color(programs)
