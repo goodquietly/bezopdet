@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.17.2'
 
-set :application, 'bbqgp'
+set :application, 'bezopdet'
 set :repo_url, 'git@github.com:goodquietly/bezopdet.git'
 set :branch, 'main'
 
@@ -34,3 +34,5 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/webpack
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }

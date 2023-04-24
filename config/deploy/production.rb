@@ -7,7 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server '213.139.211.121', user: 'deploy', roles: %w[app db web]
+server '213.139.211.121', user: 'deploy', roles: %w[app db web worker]
 
 # set :resque_environment_task, true
 # set :workers, { "#{fetch(:application)}*" => 1 }
