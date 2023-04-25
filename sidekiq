@@ -14,7 +14,7 @@
 # Use `journalctl -u sidekiq -rn 100` to view the last 100 lines of log output.
 #
 [Unit]
-Description=sidekiq for bezopdet (production)
+Description=sidekiq
 # start us only once the network and logging subsystems are available,
 # consider adding redis-server.service if Redis is local and systemd-managed.
 After=syslog.target network.target
@@ -42,8 +42,8 @@ Type=notify
 WatchdogSec=10
 
 WorkingDirectory=/home/deploy/bezopdet/current
-ExecStart=/home/dmitrii/.rbenv/bin/rbenv exec bundle exec sidekiq -e production   
-
+ExecStart=/home/deploy/.rbenv/bin/rbenv exec bundle exec sidekiq -e production   
+# ExecStart=/home/deploy/.rvm/bin/rvm in /home/deploy/bezopdet/current do bundle exec sidekiq -e production
 # Use `systemctl kill -s TSTP sidekiq` to quiet the Sidekiq process
 
 UMask=0002
