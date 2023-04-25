@@ -12,6 +12,8 @@ class UserProgramBuilderService < ApplicationService
   private
 
   def create_programs_for_user
+    return unless TrainingProgram.published.present?
+
     TrainingProgram.published.map do |program|
       UserProgram.find_or_create_by(user_id: @model.id, training_program_id: program.id)
     end

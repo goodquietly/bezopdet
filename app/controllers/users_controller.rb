@@ -20,7 +20,7 @@ class UsersController < ApplicationController
           }
         )
 
-        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'http://localhost:3000/', 'http'
+        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'http://213.139.211.121/', 'http'
         pdf = Grover.new(absolute_html).to_pdf
 
         send_data(pdf, filename: "Passport_#{@user.full_name}_#{Date.current}", type: 'application/pdf')

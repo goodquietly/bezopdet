@@ -1,7 +1,7 @@
 Grover.configure do |config|
   config.options = {
     format: 'A4',
-    display_url: 'http://127.0.0.1:3000',
+    display_url: 'http://213.139.211.121',
     style_tag_options: [
       { path: './app/assets/builds/application.css' },
       { url: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' }
