@@ -2,7 +2,7 @@ class MailNotificationJob
   include Sidekiq::Job
   sidekiq_options retry: 10, dead: false
 
-  def perform(_args)
+  def perform
     UserProgram.find_each do |program|
       if program.completed? && program.completed_at.to_date < Date.current - 3.months
         program.update_columns(completed: false, notice_time: nil)

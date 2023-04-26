@@ -9,9 +9,6 @@
 
 server '213.139.211.121', user: 'deploy', roles: %w[app db web sidekiq]
 
-# set :resque_environment_task, true
-# set :workers, { "#{fetch(:application)}*" => 1 }
-
 # role-based syntax
 # ==================
 
