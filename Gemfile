@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 gem 'activeadmin'
+gem 'aws-sdk-s3', require: false
 gem 'bootsnap', require: false
 gem 'bootstrap-email'
 gem 'cssbundling-rails'
@@ -13,6 +14,7 @@ gem 'dotenv-rails'
 gem 'grover'
 gem 'jbuilder'
 gem 'jsbundling-rails'
+gem 'image_processing', '~> 1.2'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'mailjet'
 gem 'pg', '~> 1.1'
