@@ -5,7 +5,8 @@ class UserProgramsController < ApplicationController
 
   def update
     if @user_program.update(user_program_params)
-      redirect_to user_program_path(@user_program), notice: 'Вы установили напоминание'
+      redirect_to user_program_path(@user_program),
+                  notice: 'Напоминание установлено. Вы получите email-уведомление в день события.'
     else
       render :edit
     end
@@ -17,7 +18,7 @@ class UserProgramsController < ApplicationController
     @user_program.update_columns(completed: true, notice_time: nil, completed_at: Time.now)
 
     redirect_to user_program_path(@user_program),
-                notice: 'Методика пройдена! Поздравляем! Рекомендуем повторно пройти методику через 3 месяца'
+                notice: 'Методика пройдена! Поздравляем! Рекомендуем повторно пройти методику через 3 месяца.'
   end
 
   private
