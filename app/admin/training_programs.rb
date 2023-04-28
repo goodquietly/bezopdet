@@ -9,18 +9,22 @@ ActiveAdmin.register TrainingProgram do
     def create
       @training_program = TrainingProgram.new(permitted_params[:training_program])
 
+      super
       return unless @training_program.save
 
       UserProgramBuilderService.call(@training_program)
+
       super
     end
 
     def update
       @training_program = TrainingProgram.find(params[:id])
 
+      super
       return unless @training_program.update(permitted_params[:training_program])
 
       UserProgramBuilderService.call(@training_program)
+
       super
     end
   end
