@@ -1,18 +1,18 @@
 <main>
   <div class="m-1 mb-4 rounded-3">
-    <div class="container-fluid py-5 row text-center justify-content-center">
-      <div class="col-md-5">
+    <div class="py-5 row text-center justify-content-center">
+      <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
+      <div class="col-lg-6 mb-5 align-content-center">
         <%= image_tag('clock.jpg', class: 'img-fluid') %>
       </div>
-      <div class="col-md-7 d-flex text-center">
-        <div class="flex-fill">
-          <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
+      <div class="col-lg-6 d-flex text-center align-content-center flex-wrap">
+        <h4 class='text-success'>Задайте параметры, чтобы запланировать ознакомление с активностью в указанное время</h4>
+        <div class="w-100">
 
           <%= render "form", user_program: @user_program %>
 
-          <div>
-            <%= button_to "На страницу методики", @user_program, class: 'btn btn-info my-3', method: :get %>
-            <%= button_to "К списку методик", user_path, class: 'btn btn-info', method: :get %>
+          <div class="align-content-end flex-wrap">
+            <%= button_to "На страницу активности", @user_program, class: 'btn btn-info my-3', method: :get %>
           </div>
         </div>
       </div>

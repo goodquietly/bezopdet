@@ -13,8 +13,6 @@ ActiveAdmin.register TrainingProgram do
       return unless @training_program.save
 
       UserProgramBuilderService.call(@training_program)
-
-      super
     end
 
     def update
@@ -24,8 +22,6 @@ ActiveAdmin.register TrainingProgram do
       return unless @training_program.update(permitted_params[:training_program])
 
       UserProgramBuilderService.call(@training_program)
-
-      super
     end
   end
 
