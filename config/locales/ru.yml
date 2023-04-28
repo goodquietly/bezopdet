@@ -1,7 +1,7 @@
 ru:
   simple_calendar:
     week: Неделя
-  date:
+  date_calendar:
     month_names:
       [
         '',
