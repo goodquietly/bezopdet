@@ -1,16 +1,16 @@
 <main>
   <div class="m-1 mb-4 rounded-3">
-    <div class="container-fluid py-5 row text-center justify-content-center">
-      <div class="col-md-6">
-        <%= image_tag('childs-2.jpg', class: 'img-fluid') %>
+    <div class="py-5 row text-center justify-content-center">
+      <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
+      <div class="col-lg-8 mb-5">
+        <%= link_to image_tag(@user_program.training_program.pdf.preview(resize_to_limit: [800, 600]), 
+                              class: 'img-fluid'), @user_program.training_program.pdf.url, target: '_blank' %>
       </div>
-      <div class="col-md-6 d-flex text-center">
-        <div class="flex-fill">
-        <%= render @user_program %>
+      <div class="col-lg-4 d-flex text-center align-content-center flex-wrap">
+        <div class="w-100">
 
-        <%= button_to "Установить напоминание", edit_user_program_path(@user_program), class: 'btn btn-info mt-3', method: :get %>
+          <%= render @user_program %>
 
-        <%= button_to "В личный кабинет", user_path(@user_program.user), class: 'btn btn-info mt-3', method: :get %>
         </div>
       </div>
     </div>

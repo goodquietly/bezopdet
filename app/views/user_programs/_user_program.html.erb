@@ -1,26 +1,30 @@
-<h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
 <div class="card text-center">
-  <div class="card-body">
+  <div class="card-header">
     <div class="d-grid gap-2">
-      <%= link_to 'Ознакомиться', user_program.training_program.url , class: 'btn btn-info', target: '_blank' %>
-      
-      <% if policy(user_program).complete? %>
-        <%= link_to 'Выполнено', complete_user_program_path(user_program), class: 'btn btn-info', 
-                           data: { turbo_method: :put, turbo_confirm: "Вы уверены, что методика усвоена?"} %>
-      <% end %>
-      
-    </div>
 
+      <% if policy(user_program).complete? %>
+      <%= link_to 'Выполнено!', complete_user_program_path(user_program), class: 'btn btn-warning m-2', 
+                           data: { turbo_method: :put, turbo_confirm: "Вы уверены, что методика усвоена?"} %>
+      <% else %>
+        <p class='text-success mb-0'>Активность изучена: <%= l(user_program.completed_at, format: :long) %></p>
+      <% end %>
+
+    </div>
   </div>
-  <div class="card-footer text-muted">
-    <p class="card-text"><b>Напоминание: </b>
+  <div class="card-body">
+    <div class="card-text"><b>Напоминание: </b>
 
       <% unless user_program.notice_time.nil? %>
-        <%= l(user_program.notice_time, format: :long) %>
+        <p class='text-danger mb-0'><%= l(user_program.notice_time, format: :long) %></p>
       <% else %>
         Не установлено
       <% end %>
 
-    </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="d-grid gap-2">
+      <%= link_to "Установить напоминание", edit_user_program_path(@user_program), class: 'btn btn-info m-2' %>
+    </div>
   </div>
 </div>
