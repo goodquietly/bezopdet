@@ -8,11 +8,11 @@ export default class extends Controller {
     document.addEventListener('turbo:load', function () {
       flatpickr('.notice_time', {
         enableTime: true,
-        dateFormat: 'j F Y h:i',
         time_24hr: true,
         locale: Russian,
         minDate: 'today',
         minTime: '08:00',
+        allowInput: true,
       });
     });
   }
