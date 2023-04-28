@@ -5,6 +5,14 @@ module ApplicationHelper
     0
   end
 
+  def background_color(program)
+    if program.completed?
+      'success'
+    else
+      'danger'
+    end
+  end
+
   def protection_color(programs)
     if child_protection(programs) < 30
       '#ff4d4d'

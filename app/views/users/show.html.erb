@@ -61,19 +61,9 @@
 
     <% @user_programs.map do |program| %>
     <div class="col-md-6 my-4">
-      <div class="h-100 p-5
-
-                   <% if program.completed? %>  
-                     text-bg-success
-                   <% else %>
-                     text-bg-danger
-                   <% end %>
-
-                   rounded-3">
-        <h2><%= program.training_program.title %></h2>
-        <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix
-          and match with additional component themes and more.</p>
-        <%= button_to 'Перейти к программе', user_program_path(program), method: :get, class: "btn btn-outline-light" %>
+      <div class="h-100 p-1 text-bg-<%= background_color(program) %> rounded-3">             
+        <%= link_to image_tag(program.training_program.pdf.preview(resize_to_limit: [800, 600]), 
+                              class: 'img-fluid'), user_program_path(program) %>
       </div>
     </div>
     <% end %>

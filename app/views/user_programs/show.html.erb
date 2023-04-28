@@ -2,7 +2,7 @@
   <div class="m-1 mb-4 rounded-3">
     <div class="py-5 row text-center justify-content-center">
       <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
-      <div class="col-lg-8 mb-5">
+      <div class="col-lg-8 mb-5 text-bg-<%= background_color(@user_program) %> rounded-3">               
         <%= link_to image_tag(@user_program.training_program.pdf.preview(resize_to_limit: [800, 600]), 
                               class: 'img-fluid'), @user_program.training_program.pdf.url, target: '_blank' %>
       </div>
