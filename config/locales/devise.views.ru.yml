@@ -100,7 +100,7 @@ ru:
         cancel_my_account: Удалить учетную запись
         currently_waiting_confirmation_for_email: 'Ожидается подтверждение адреса E-mail: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: оставьте поле пустым, если не хотите его менять
-        title: Редактировать %{resource}
+        title: Редактировать профиль
         unhappy: Разочарованы?
         update: Обновить
         we_need_your_current_password_to_confirm_your_changes: введите текущий пароль для подтверждения изменений
@@ -116,6 +116,8 @@ ru:
     sessions:
       already_signed_out: Выход из системы уже выполнен.
       new:
+        sign_up: Регистрация
+        forgot_your_password: Забыли пароль?
         sign_in: Войти
       signed_in: Вход в систему выполнен.
       signed_out: Выход из системы выполнен.
@@ -129,10 +131,10 @@ ru:
         sign_in_with_provider: 'Войти с помощью: %{provider}'
         sign_up: Регистрация
       minimum_password_length:
-        few: "(минимум %{count} знака)"
-        many: "(минимум %{count} знаков)"
-        one: "(минимум %{count} знак)"
-        other: "(минимум %{count} знаков)"
+        few: '(минимум %{count} знака)'
+        many: '(минимум %{count} знаков)'
+        one: '(минимум %{count} знак)'
+        other: '(минимум %{count} знаков)'
     unlocks:
       new:
         resend_unlock_instructions: Выслать подтверждение заново
@@ -147,7 +149,7 @@ ru:
       not_found: не найден
       not_locked: не заблокирован
       not_saved:
-        few: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
-        many: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
-        one: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
-        other: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
+        few: '%{resource}: сохранение не удалось из-за %{count} ошибок:'
+        many: '%{resource}: сохранение не удалось из-за %{count} ошибок:'
+        one: '%{resource}: сохранение не удалось из-за %{count} ошибки:'
+        other: '%{resource}: сохранение не удалось из-за %{count} ошибки:'

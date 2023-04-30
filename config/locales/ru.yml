@@ -25,3 +25,8 @@ ru:
         one: '%{count} год'
         few: '%{count} года'
         many: '%{count} лет'
+    attributes:
+      user:
+        first_name: Имя
+        last_name: Фамилия
+        birthday: День Рождения
