@@ -19,10 +19,11 @@
             backdrop-filter: blur(30px);
             ">
           <div class="card-body p-5 shadow-5 text-center">
-            <h2 class="fw-bold mb-5"><%= t('.title') %></h2>
+            <h2 class="fw-bold mb-3"><%= t('.title') %></h2>
 
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
-              html: { method: :put }) do |f| %>
+              html: { method: :put }, data: { controller: "flatpickr", turbo: false }) do |f| %>
+
               <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="row mb-3">
@@ -44,13 +45,8 @@
             </div>
 
             <div class="mb-3">
-              <p><%= f.label :birthday %></p>
-              <%= f.date_select(:birthday, { 
-                                start_year: Time.now.year - 15, 
-                                end_year: Time.now.year, 
-                                prompt: true, 
-                                order: [:day, :month, :year] 
-                                } ) %>
+              <h5><%= f.label :birthday %></h5>              
+              <%= f.date_field :birthday, placeholder: 'Введите дату рождения..', class: 'birthday form-select-lg' %>
             </div>
 
             <div class="form-floating mb-3">

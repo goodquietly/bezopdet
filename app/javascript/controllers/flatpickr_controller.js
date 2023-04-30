@@ -14,6 +14,11 @@ export default class extends Controller {
         minTime: '08:00',
         allowInput: true,
       });
+
+      flatpickr('.birthday', {
+        locale: Russian,
+        allowInput: true,
+      });
     });
   }
 }
