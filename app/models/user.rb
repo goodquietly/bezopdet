@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
-         :trackable, :lockable
+         :trackable, :lockable, :confirmable
 
   before_save :capitalize_name
 
