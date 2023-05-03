@@ -1,1 +1,31 @@
-<%= image_tag('childs-2.jpg', class: 'img-fluid p-5') %>
+<main>
+  <div class="m-1 mb-4 rounded-3">
+    <div class="pt-5 row text-center justify-content-center">
+      <h3 class="shadow p-3 mb-5 bg-body rounded">«Безопасное детство – самое крупное сообщество на тему детской
+        безопасности.»</h3>
+      <div class="col-md-6">
+        <div class="m-1 mb-4 rounded-3">
+          <%= image_tag('childs-2.jpg', class: 'img-fluid') %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="m-1 mb-4 rounded-3 pt-3 d-flex flex-column h-100">
+          <div class="shadow p-2 bg-body rounded mb-auto">
+            <h4>Создай индивидуальный план защиты своего ребенка!</h4>
+          </div>
+
+          <% unless user_signed_in? %>
+          <div><%= link_to 'Начать', new_user_registration_path, class: "btn btn-warning btn-lg my-3" %></div>
+          <% else %>
+          <div><%= link_to 'Продолжить', user_path(current_user), class: "btn btn-warning btn-lg my-3" %></div>
+          <% end %>
+
+          <div class='mt-auto mb-3'><%= link_to icon('fa-brands', 'telegram', class:"fa-2xl", style: "color: #2AABEE;"), 
+                                                'https://t.me/bezopdet', target: '_blanc' %>
+            <%= link_to icon('fa-brands', 'vk', class:"fa-2xl", style: "color: #4C75A3;"), 
+                                                'https://vk.com/public211013924', target: '_blanc' %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
