@@ -20,12 +20,12 @@ class UserProgramBuilderService < ApplicationService
   end
 
   def build_program_for_users
-    User.all.find_each do |user|
+    User.find_each do |user|
       next UserProgram.destroy_by(user_id: user.id, training_program_id: @model.id) unless @model.published?
 
       program = UserProgram.find_or_create_by(user_id: user.id, training_program_id: @model.id)
 
-      UserMailer.new_training_program(program).deliver_later
+      UserMailer.new_training_program(program).deliver_later if user.subscribed?
     end
   end
 end
