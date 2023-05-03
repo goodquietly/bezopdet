@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 35 }
   validates :last_name, presence: true, length: { maximum: 35 }
-  validates :birthday, presence: true
+  validates :birthday, presence: true, comparison: { less_than: Date.current - 1.day }
 
   has_many :user_programs, dependent: :destroy
   has_many :training_programs, through: :user_programs
