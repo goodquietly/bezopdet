@@ -11,7 +11,7 @@
     }
   </style>
 
-  <div class="container py-4">
+  <div class="py-4">
     <div class="row g-0 align-items-center">
       <div class="col-lg-6 mb-5 mb-lg-0">
         <div class="card cascading-right" style="
@@ -51,14 +51,18 @@
 
             <div class="form-floating mb-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", 
-                  placeholder: 'Введите пароль', id: "floatingInput", class: "form-control" %>
-              <%= f.label :email, for: "floatingInput" %>
+                  placeholder: 'Введите email', id: "floatingInput", class: "form-control" %>
+              <%= f.label :email, for: "floatingInput" %>              
+            </div>
+
+            <div class="form-check form-switch mb-3">
+              <%= f.label :subscribed, for: "flexSwitchCheckChecked", class: "form-check-label" %> 
+              <%= f.check_box :subscribed, checked: true, class: "form-check-input", id: "flexSwitchCheckChecked" %>              
             </div>
 
             <div class="form-floating mb-3">
               <%= f.password_field :password, autocomplete: "new-password", 
-                   class: "form-control", id: "floatingPassword", placeholder: 'Пароль (6 знаков минимум)' %>
-                   
+                   class: "form-control", id: "floatingPassword", placeholder: 'Пароль (6 знаков минимум)' %>                   
               <%= f.label :password, for: "floatingPassword" %>
             </div>
 
