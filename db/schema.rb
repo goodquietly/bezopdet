@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_152043) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_123800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,37 +62,47 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152043) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "child_programs", force: :cascade do |t|
+    t.boolean "completed", default: false, null: false
+    t.datetime "completed_at"
+    t.datetime "notice_time"
+    t.bigint "child_id", null: false
+    t.bigint "training_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_child_programs_on_child_id"
+    t.index ["training_program_id"], name: "index_child_programs_on_training_program_id"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.date "birthday", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_children_on_user_id"
+  end
+
   create_table "training_programs", force: :cascade do |t|
     t.string "title", null: false
-    t.text "url", null: false
     t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_training_programs_on_title", unique: true
   end
 
-  create_table "user_programs", force: :cascade do |t|
-    t.boolean "completed", default: false, null: false
-    t.datetime "notice_time"
-    t.bigint "user_id", null: false
-    t.bigint "training_program_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "completed_at"
-    t.index ["training_program_id"], name: "index_user_programs_on_training_program_id"
-    t.index ["user_id"], name: "index_user_programs_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.datetime "birthday", null: false
+    t.boolean "subscribed", default: false, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -103,16 +113,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152043) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.boolean "subscribed", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -121,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152043) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "user_programs", "training_programs"
-  add_foreign_key "user_programs", "users"
+  add_foreign_key "child_programs", "children"
+  add_foreign_key "child_programs", "training_programs"
+  add_foreign_key "children", "users"
 end
