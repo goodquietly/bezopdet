@@ -1,5 +1,5 @@
 ActiveAdmin.register TrainingProgram do
-  permit_params :title, :url, :pdf, :published
+  permit_params :title, :pdf, :published
 
   scope :all
   scope :published
@@ -28,7 +28,6 @@ ActiveAdmin.register TrainingProgram do
   form do |f|
     inputs 'Details' do
       f.input :title
-      f.input :url
       f.input :pdf, as: :file
       f.input :published
     end

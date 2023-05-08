@@ -27,7 +27,8 @@ ru:
         many: '%{count} лет'
     attributes:
       user:
+        subscribed: Согласен на получение информации по Email
+      child:
         first_name: Имя
         last_name: Фамилия
         birthday: День Рождения
-        subscribed: Согласен на получение информации по Email
