@@ -3,15 +3,15 @@ class MailNotificationJob
   sidekiq_options retry: 10, dead: false
 
   def perform
-    UserProgram.find_each do |program|
+    ChildProgram.find_each do |program|
       if program.completed? && program.completed_at.to_date < Date.current - 3.months
         program.update_columns(completed: false, notice_time: nil)
-        UserMailer.repeat_training_program(program).deliver_later if program.user.subscribed?
+        UserMailer.repeat_training_program(program).deliver_later if program.child.user.subscribed?
       end
 
       next unless program.notice_time.present?
 
-      if program.notice_time.to_date == Date.current && program.user.subscribed?
+      if program.notice_time.to_date == Date.current && program.child.user.subscribed?
         UserMailer.notice_time(program).deliver_later
       end
 
