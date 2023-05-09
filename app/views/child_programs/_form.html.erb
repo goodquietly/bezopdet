@@ -1,7 +1,7 @@
-<%= form_with(model: user_program, data: { controller: "flatpickr",
+<%= form_with(model: child_program, data: { controller: "flatpickr",
                                   turbo: false }) do |f| %>
 
-  <%= render partial: 'partials/form_errors', locals: {model: user_program} %>
+  <%= render partial: 'partials/form_errors', locals: {model: child_program} %>
 
   <%= f.datetime_field :notice_time, placeholder: 'Введите дату и время..', class: 'notice_time form-select-lg my-5' %>
 

@@ -8,29 +8,29 @@
             <%= image_tag('childs.jpg', class: 'img-fluid') %>
           </div>
           <div class="card-body">
-            <h5 class="card-title fs-3 text-secondary"><%= @user.full_name %>, <%= @user.age_to_s %></h5>
+            <h5 class="card-title fs-3 text-secondary"><%= @child.full_name %>, <%= @child.age_to_s %></h5>
             <div class="d-flex align-content-center flex-wrap rounded-3 p-2 mb-2"
-              style="background-color: <%= protection_color(@user_programs) %>;">
+              style="background-color: <%= protection_color(@child_programs) %>;">
               <div class="px-3 p-2 flex-fill">
                 <p class="small text-muted mb-1">Активности</p>
-                <p class="mb-0"><%= @user_programs.size %></p>
+                <p class="mb-0"><%= @child_programs.size %></p>
               </div>
               <div class="px-3 p-2 flex-fill">
                 <p class="small text-muted mb-1">Защищенность</p>
-                <p class="mb-0"><%= child_protection(@user_programs) %> %</p>
+                <p class="mb-0"><%= child_protection(@child_programs) %> %</p>
               </div>
               <div class="px-3 p-2 flex-fill">
                 <p class="small text-muted mb-1">Уровень</p>
-                <p class="mb-0"><%= protection_raiting(@user_programs) %></p>
+                <p class="mb-0"><%= protection_raiting(@child_programs) %></p>
               </div>
             </div>
             <div class="progress">
               <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                 aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                style="width: <%= child_protection(@user_programs) %>%"></div>
+                style="width: <%= child_protection(@child_programs) %>%"></div>
             </div>
             <div class="d-flex pt-1">
-              <%= link_to 'Сформировать паспорт безопасности', passport_user_path(@user, format: :pdf), class: 'btn btn-outline-info flex-grow-1' %>
+              <%= link_to 'Сформировать паспорт безопасности', passport_child_path(@child, format: :pdf), class: 'btn btn-outline-info flex-grow-1' %>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="list-group">
           <% notices.each do |notice| %>
-          <%= link_to notice.start_time.strftime('%H:%M'), user_program_path(notice), 
+          <%= link_to notice.start_time.strftime('%H:%M'), child_program_path(notice), 
                     title: notice.training_program.title, 
                     class: "list-group-item p-0 list-group-item-action list-group-item-#{random_bootstrap_colors}" %>
           <% end %>
@@ -59,12 +59,12 @@
   <div class="row align-items-md-stretch rounded-3 justify-content-center">
     <h3 class="shadow p-3 bg-body rounded text-center p-1 col-md-10 mx-3">Методики и другие активности</h3>
 
-    <% @user_programs.map do |program| %>
+    <% @child_programs.map do |program| %>
     <div class="col-md-6 my-4">
       <div class="h-100 p-1 text-bg-<%= background_color(program) %> rounded-3"> 
         <% if program.training_program.pdf.representable? %>             
           <%= link_to image_tag(program.training_program.pdf.representation(resize_to_limit: [800, 600]), 
-                              class: 'img-fluid'), user_program_path(program) %>
+                              class: 'img-fluid'), child_program_path(program) %>
         <% end %>
       </div>
     </div>

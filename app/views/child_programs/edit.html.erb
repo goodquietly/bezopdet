@@ -1,7 +1,7 @@
 <main>
   <div class="m-1 mb-4 rounded-3">
     <div class="py-5 row text-center justify-content-center">
-      <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @user_program.training_program.title %></h3>
+      <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @child_program.training_program.title %></h3>
       <div class="col-lg-6 mb-5 align-content-center">
         <%= image_tag('clock.jpg', class: 'img-fluid') %>
       </div>
@@ -9,10 +9,10 @@
         <h4 class='text-success'>Задайте параметры, чтобы запланировать ознакомление с активностью в указанное время</h4>
         <div class="w-100">
 
-          <%= render "form", user_program: @user_program %>
+          <%= render "form", child_program: @child_program %>
 
           <div class="align-content-end flex-wrap">
-            <%= button_to "На страницу активности", @user_program, class: 'btn btn-info my-3', method: :get %>
+            <%= button_to "На страницу активности", @child_program, class: 'btn btn-info my-3', method: :get %>
           </div>
         </div>
       </div>
