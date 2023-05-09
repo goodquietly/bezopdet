@@ -1,4 +1,4 @@
-class UserProgramPolicy < ApplicationPolicy
+class ChildProgramPolicy < ApplicationPolicy
   def edit?
     update?
   end

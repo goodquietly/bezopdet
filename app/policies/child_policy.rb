@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class ChildPolicy < ApplicationPolicy
   def show?
     record == user
   end
