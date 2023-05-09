@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
     @program = program
 
     bootstrap_mail(
-      to: @program.user.email,
+      to: @program.child.user.email,
       subject: 'Безопасное детство - опубликована новая активность!'
     )
   end
@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     @program = program
 
     bootstrap_mail(
-      to: @program.user.email,
+      to: @program.child.user.email,
       subject: 'Безопасное детство - напоминание!'
     )
   end
@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
     @program = program
 
     bootstrap_mail(
-      to: @program.user.email,
+      to: @program.child.user.email,
       subject: 'Безопасное детство - пришло время повторить активность!'
     )
   end

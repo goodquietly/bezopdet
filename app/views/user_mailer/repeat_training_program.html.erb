@@ -3,7 +3,7 @@
 <hr>
 <div class="space-y-3">
   <p class="text-gray-700">Рекомендуем повторить в ближайшее время или добавить в свой персональный
-    календарь <%= link_to "напоминание", edit_user_program_url(@program), target: "_blank" %>.</p>
+    календарь <%= link_to "напоминание", edit_child_program_url(@program), target: "_blank" %>.</p>
   <p class="text-gray-700">
     We hope you enjoy using Boostrap Email. This is our Online Editor that allows you to edit emails
     and have them render directly in the browser. The outputted HTML will be in the "HTML" tab in the top
@@ -15,10 +15,10 @@
     Ранее Активность изучали - <%= l(@program.completed_at, format: :short)%>
   </p>
   <p class="text-gray-700">
-    <%= link_to 'Личный кабинет', user_url(@program.user), target: "_blank" %>
-    Вашего ребёнка <%= @program.user.full_name %>.
+    <%= link_to 'Личный кабинет', child_url(@program.child), target: "_blank" %>
+    Вашего ребёнка <%= @program.child.full_name %>.
   </p>
 </div>
 <hr>
-<%= link_to 'Перейти к Активности', user_program_url(@program), 
+<%= link_to 'Перейти к Активности', child_program_url(@program), 
          class: "btn btn-primary", target: "_blank" %>

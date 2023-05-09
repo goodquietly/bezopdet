@@ -12,9 +12,7 @@ Rails.application.routes.draw do
 
   root 'pages#show', page: 'home'
 
-  devise_for :users, controllers: {
-    registrations: 'users/registrations'
-  }
+  devise_for :users
 
   resources :children, only: :show do
     member do
