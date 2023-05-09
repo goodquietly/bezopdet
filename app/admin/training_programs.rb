@@ -12,7 +12,7 @@ ActiveAdmin.register TrainingProgram do
       super
       return unless @training_program.save
 
-      UserProgramBuilderService.call(@training_program)
+      ChildProgramBuilderService.call(@training_program)
     end
 
     def update
@@ -21,7 +21,7 @@ ActiveAdmin.register TrainingProgram do
       super
       return unless @training_program.update(permitted_params[:training_program])
 
-      UserProgramBuilderService.call(@training_program)
+      ChildProgramBuilderService.call(@training_program)
     end
   end
 
@@ -51,14 +51,14 @@ ActiveAdmin.register TrainingProgram do
   member_action :publish, method: :put do
     program = TrainingProgram.find(params[:id])
     program.update(published: true)
-    UserProgramBuilderService.call(program)
+    ChildProgramBuilderService.call(program)
     redirect_to admin_training_program_path(program)
   end
 
   member_action :unpublish, method: :put do
     program = TrainingProgram.find(params[:id])
     program.update(published: false)
-    UserProgramBuilderService.call(program)
+    ChildProgramBuilderService.call(program)
     redirect_to admin_training_program_path(program)
   end
 end

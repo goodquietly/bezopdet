@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :children, only: :show do
+  resources :children do
     member do
       get 'passport'
     end
