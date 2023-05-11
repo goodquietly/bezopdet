@@ -26,29 +26,6 @@
 
               <%= render "devise/shared/error_messages", resource: resource %>
 
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <%= f.text_field :first_name, autofocus: true, autocomplete: "Имя", 
-                      placeholder: 'Имя', id: "floatingInput", class: "form-control" %>
-                  <%= f.label :first_name, for: "floatingInput" %>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <%= f.text_field :last_name, autofocus: true, autocomplete: "Фамилия", 
-                      placeholder: 'Фамилия', id: "floatingInput", class: "form-control" %>
-                  <%= f.label :last_name, for: "floatingInput" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <h5><%= f.label :birthday %></h5>              
-              <%= f.date_field :birthday, placeholder: 'Введите дату рождения..', class: 'birthday form-select-lg' %>
-            </div>
-
             <div class="form-floating mb-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", 
                   placeholder: 'Введите email', id: "floatingInput", class: "form-control" %>
