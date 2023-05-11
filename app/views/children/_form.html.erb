@@ -1,0 +1,39 @@
+<div class="card-body shadow-5 text-center">
+  <%= form_for @child, data: { controller: "flatpickr", turbo: false } do |f| %>
+
+  <%= render partial: 'partials/form_errors', locals: {model: @child} %>
+  <%= f.hidden_field :user_id %>
+  
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-floating mb-3">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "First name", 
+                      placeholder: 'Имя', id: "floatingInput", class: "form-control" %>
+        <%= f.label :first_name, for: "floatingInput" %>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="form-floating mb-3">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name", 
+                      placeholder: 'Фамилия', id: "floatingInput", class: "form-control" %>
+        <%= f.label :last_name, for: "floatingInput" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <h5><%= f.label :birthday %></h5>
+    <%= f.date_field :birthday, placeholder: 'Введите дату рождения..', class: 'birthday form-select-lg' %>
+  </div>
+
+  <div class='d-grid gap-2'>
+    <%= f.submit 'Сохранить' , class: 'btn btn-secondary btn-block mb-4' %>
+  </div>
+
+  <div class="d-grid gap-2">
+    <%= link_to 'Назад', :back, class: 'btn btn-warning mb-3' %>
+  </div>
+
+  <% end %>
+</div>
