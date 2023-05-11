@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
       redirect_to(new_user_session_path)
     end
   end
+
+  def pundit_user
+    UserContext.new(current_user, request[:id])
+  end
 end

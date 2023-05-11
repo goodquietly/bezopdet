@@ -3,8 +3,8 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(user_context, record)
+    @user = user_context.user
     @record = record
   end
 
@@ -34,22 +34,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  class Scope
-    def initialize(user, scope)
-      raise Pundit::NotAuthorizedError, 'необходимо войти в систему' unless user
-
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope.where(user: @user)
-    end
-
-    private
-
-    attr_reader :user, :scope
   end
 end
