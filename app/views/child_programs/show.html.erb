@@ -5,11 +5,12 @@
       <div class="col-lg-8 mb-5 text-bg-<%= background_color(@child_program) %> rounded-3"> 
         <% if @child_program.training_program.pdf.representable? %>             
           <%= link_to image_tag(@child_program.training_program.pdf.representation(resize_to_limit: [800, 600]), 
-                              class: 'img-fluid'), @child_program.training_program.pdf.url, target: '_blank' %>
+                              class: 'img-fluid'), url_for(@child_program.training_program.pdf), target: '_blank' %>
         <% end %>
       </div>
       <div class="col-lg-4 d-flex text-center align-content-center flex-wrap">
         <div class="w-100">
+          <h3 class="shadow p-3 mb-5 bg-body rounded">Ребенок: <%= @child_program.child.full_name %></h3>
 
           <%= render @child_program %>
 
