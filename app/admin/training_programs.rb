@@ -26,7 +26,7 @@ ActiveAdmin.register TrainingProgram do
   end
 
   form do |f|
-    inputs 'Details' do
+    inputs 'Характеристики' do
       f.input :title
       f.input :pdf, as: :file
       f.input :published
@@ -36,14 +36,14 @@ ActiveAdmin.register TrainingProgram do
 
   action_item :publish, only: :show do
     unless training_program.published?
-      link_to 'Publish', publish_admin_training_program_path(training_program),
+      link_to 'Опубликовать', publish_admin_training_program_path(training_program),
               method: :put
     end
   end
 
   action_item :unpublish, only: :show do
     if training_program.published?
-      link_to 'Unpublish', unpublish_admin_training_program_path(training_program),
+      link_to 'Снять с публикации', unpublish_admin_training_program_path(training_program),
               method: :put
     end
   end

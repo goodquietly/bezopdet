@@ -4,7 +4,7 @@ ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
   content title: proc { I18n.t('active_admin.dashboard') } do
-    panel 'Active Training program' do
+    panel 'Опубликованные активности' do
       ul do
         TrainingProgram.published.map do |program|
           li link_to(program.title, admin_training_program_path(program))
