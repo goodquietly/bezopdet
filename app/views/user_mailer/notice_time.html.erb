@@ -1,26 +1,23 @@
-<h1 class="h3 mb-2">Сегодня запланировано изучение Активности!</h1>
+<h1 class="h3 mb-2">Сегодня запланировано изучение новой темы!</h1>
 <h5 class="text-teal-700">«<%= @program.training_program.title %>»</h5>
 <hr>
 <div class="space-y-3">
-  <p class="text-gray-700">Напоминаем Вам, сегодня, в <b class="text-red-500">
-      <%= @program.notice_time.strftime('%H:%M') %></b>,
-    Вы запланировали изучать Активность. Установить новое напоминание на другой день возможно по
-    <%= link_to "ссылке", edit_child_program_url(@program), target: "_blank" %>.</p>
   <p class="text-gray-700">
-    We hope you enjoy using Boostrap Email. This is our Online Editor that allows you to edit emails
-    and have them render directly in the browser. The outputted HTML will be in the "HTML" tab in the top
-    and that is the HTML you want to use to send emails. All the styles and responsive CSS are self contained
-    in the
-    HTML that is generated making is very portable needing no external CSS files.
+    Добрый день! Напоминаем, что сегодня, в <b class="text-red-500">
+      <%= @program.notice_time.strftime('%H:%M') %></b>, Вы планировали изучить одну из тем детской безопасности на
+    нашем сайте.
+  </p>
+  <p class="text-gray-700">Установить напоминание на другой день можно по ссылке:</p>
+  <%= link_to 'Перейти к Активности', child_program_url(@program), 
+         class: "btn btn-primary ax-center", target: "_blank" %>
+  <p class="text-gray-700">
+    Также вы можете ознакомиться с полным списком тем для изучения и добавить их в свой индивидуальный план.
   </p>
   <p class="text-gray-700">
-    Запланированное время - <%= l(@program.notice_time, format: :short)%>
+    Пусть ваш ребёнок будет в безопасности!
   </p>
-  <p class="text-gray-700">
+  <p class="text-gray-700 mt-3">
     <%= link_to 'Личный кабинет', child_url(@program.child), target: "_blank" %>
-    Вашего ребёнка <%= @program.child.full_name %>.
+    Вашего ребёнка <b class='text-teal-700'><%= @program.child.full_name %></b>.
   </p>
 </div>
-<hr>
-<%= link_to 'Перейти к Активности', child_program_url(@program), 
-         class: "btn btn-primary", target: "_blank" %>
