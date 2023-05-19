@@ -44,6 +44,7 @@ ru:
     attributes:
       user:
         subscribed: Согласен на получение информации по Email
+        personal_data_policy_confirmed: Согласен с политикой обработки персональных данных
       admin_user:
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Токен подтверждения
@@ -70,8 +71,13 @@ ru:
         updated_at: Дата обновления
       child:
         first_name: Имя
+        patronymic: Отчество
         last_name: Фамилия
         birthday: День Рождения
+        residential_address: Адрес места жительства
+        allergies_and_drug_intolerance: Аллергия и неперносимости лекарств
+        medical_policy_number: Номер медицинского полиса
+        verbal_portrait_and_special_features: Словестный портрет и особые приметы ребенка
         created_at: Дата создания
         updated_at: Дата обновления
         user: Пользователь
