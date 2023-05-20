@@ -86,3 +86,6 @@ ru:
         updated_at: Дата обновления
         title: Наименование активности
         published: Опубликована?
+      contact:
+        full_name: ФИО
+        phone_number: Номер телефона

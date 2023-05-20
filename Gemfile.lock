@@ -324,6 +324,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    russian_phone (0.7.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -406,6 +407,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-i18n (~> 7.0.0)
   redis
+  russian_phone
   sassc-rails
   sidekiq (~> 6.5.5)
   simple_calendar (~> 2.4)
