@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :children do
+    resources :contacts, only: %i[create destroy]
+
     member do
       get 'passport'
     end
