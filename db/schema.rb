@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_172200) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "contact_role", ["Мама", "Папа", "Бабушка", "Дедушка", "Педиатр", "Другое"]
+  create_enum "contact_role", ["mother", "father", "grandmother", "grandfather", "pediatrician", "other"]
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
