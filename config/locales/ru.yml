@@ -89,3 +89,7 @@ ru:
       contact:
         full_name: ФИО
         phone_number: Номер телефона
+  errors:
+    one: 'В вашей форме %{count} ошибка'
+    few: 'В вашей форме %{count} ошибки'
+    many: 'В вашей форме %{count} ошибок'
