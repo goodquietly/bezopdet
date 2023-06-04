@@ -31,6 +31,7 @@ gem 'sidekiq', '~> 6.5.5'
 gem 'simple_calendar', '~> 2.4'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'translate_enum', require: 'translate_enum/active_record'
 gem 'turbo-rails'
 gem 'whenever', require: false
 

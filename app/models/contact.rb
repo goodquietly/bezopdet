@@ -10,4 +10,6 @@ class Contact < ApplicationRecord
 
   russian_phone :phone_number
   russian_phone :validated_phone, default_country: 7, allowed_cities: [495], validate: true
+
+  translate_enum :role
 end

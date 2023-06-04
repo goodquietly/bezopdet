@@ -87,8 +87,16 @@ ru:
         title: Наименование активности
         published: Опубликована?
       contact:
+        role: Связь с ребенком
         full_name: ФИО
         phone_number: Номер телефона
+        role_list:
+          mother: Мама
+          father: Папа
+          grandmother: Бабушка
+          grandfather: Дедушка
+          pediatrician: Педиатр
+          other: Другое
   errors:
     one: 'В вашей форме %{count} ошибка'
     few: 'В вашей форме %{count} ошибки'
