@@ -1,0 +1,37 @@
+<div class="card-body shadow-5 text-center">
+  <%= form_with model: [@child, contact], data: { turbo: false } do |f| %>
+
+  <%= render partial: 'partials/form_errors', locals: {model: contact} %>
+
+  <div class="row g-2 mb-3">
+    <div class="col-md-3">
+      <div class="form-floating">
+        <%= f.select(:role, 
+              options_for_select(f.object.class.translated_roles.map { |translation, k, _v| [translation, k] }), {},
+              { class: "form-select", id: "floatingSelectGrid", aria: { label: "Floating label select example" }} ) %>
+        <label for="floatingSelectGrid">Кем приходится контакт?</label>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <%= f.text_field :full_name, autofocus: true, placeholder: 'Иванов Иван Иванович', id: "floatingInputGrid", 
+            class: "form-control" %>
+        <%= f.label :full_name, for: "floatingInputGrid" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-floating">
+        <%= f.text_field :phone_number, autofocus: true, placeholder: '+79001234567', id: "floatingInputGrid2", 
+            class: "form-control" %>
+        <%= f.label :phone_number, for: "floatingInputGrid2" %>
+      </div>
+    </div>
+  </div>
+
+  <div class='d-grid gap-2'>
+    <%= f.submit 'Сохранить контакт' , class: 'btn btn-secondary btn-block mb-4' %>
+  </div>
+  <% end %>
+</div>
