@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     @new_contact = child.contacts.build(contact_params)
 
     if @new_contact.save
-      redirect_to child, notice: 'Контакт успешно сохранен!'
+      redirect_back_or_to child, notice: 'Контакт успешно сохранен!'
     else
       render 'children/edit', status: :unprocessable_entity
     end

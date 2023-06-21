@@ -10,6 +10,11 @@ class ChildrenController < ApplicationController
 
     if @child.save
       ChildProgramBuilderService.call(@child)
+      if @child.user.personal_data_policy_confirmed?
+        return redirect_to edit_child_path(@child),
+                           notice: "#{@child.full_name} - личный кабинет успешно сформирован, теперь можете добавить
+                           контакты Вашего ребенка внизу страницы."
+      end
 
       redirect_to child_path(@child), notice: "#{@child.full_name} - личный кабинет успешно сформирован!"
     else
@@ -71,6 +76,8 @@ class ChildrenController < ApplicationController
   end
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :birthday, :user_id)
+    params.require(:child).permit(:first_name, :patronymic, :last_name, :birthday, :residential_address,
+                                  :allergies_and_drug_intolerance, :medical_policy_number,
+                                  :verbal_portrait_and_special_features, :user_id)
   end
 end
