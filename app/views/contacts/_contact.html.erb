@@ -1,5 +1,20 @@
-<tr>
-  <td><%= t("activerecord.attributes.contact.role_list.#{contact.role}") %></td>
-  <td><%= contact.full_name %></td>
-  <td><%= contact.phone_number %></td>
-</tr>
+<table class="table my-5 table-striped">
+  <thead class="table-success">
+    <tr>
+      <th scope="col-3">Контакт</th>
+      <th scope="col-6">ФИО</th>
+      <th scope="col-3">Номер телефона</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% child.contacts.except(new_contact).each do |contact| %>
+      <tr>
+        <td><%= t("activerecord.attributes.contact.role_list.#{contact.role}") %></td>
+        <td><%= contact.full_name %></td>
+        <td><%= contact.phone_number %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
