@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
 
   def create
     @new_contact = child.contacts.build(contact_params)
+    authorize @new_contact
 
     if @new_contact.save
       redirect_back_or_to child, notice: 'Контакт успешно сохранен!'
@@ -24,7 +25,7 @@ class ContactsController < ApplicationController
   end
 
   def set_contact
-    @contact = child.contacts.find(params[:id])
+    @contact = authorize child.contacts.find(params[:id])
   end
 
   def contact_params
