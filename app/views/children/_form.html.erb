@@ -1,11 +1,11 @@
-<div class="card-body shadow-5 text-center">
+<div class="p-md-5 shadow-5 text-center">
   <%= form_for @child, data: { controller: "flatpickr", turbo: false } do |f| %>
 
   <%= render partial: 'partials/form_errors', locals: {model: @child} %>
   <%= f.hidden_field :user_id %>
   
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md mb-3">
       <div class="form-floating mb-3">
         <%= f.text_field :first_name, autofocus: true, autocomplete: "First name", 
                       placeholder: 'Имя', id: "floatingInput", class: "form-control" %>
@@ -13,7 +13,15 @@
       </div>
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md mb-3">
+      <div class="form-floating mb-3">
+        <%= f.text_field :patronymic, autofocus: true, autocomplete: "Patronymic", 
+                      placeholder: 'Отчество', id: "floatingInput", class: "form-control" %>
+        <%= f.label :patronymic, for: "floatingInput" %>
+      </div>
+    </div>
+
+    <div class="col-md mb-3">
       <div class="form-floating mb-3">
         <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name", 
                       placeholder: 'Фамилия', id: "floatingInput", class: "form-control" %>
@@ -22,11 +30,35 @@
     </div>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-4">
     <h5><%= f.label :birthday %></h5>
     <%= f.date_field :birthday, placeholder: 'Введите дату рождения..', class: 'birthday form-select-lg' %>
   </div>
 
+  <div class="form-floating mb-4">
+    <%= f.text_field :residential_address, autofocus: true, autocomplete: "Address", 
+                  placeholder: 'Небязательно заполнять', id: "floatingInput", class: "form-control" %>
+    <%= f.label :residential_address, for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-4">
+    <%= f.text_field :allergies_and_drug_intolerance, autofocus: true, autocomplete: "Allergies and drug intolerance", 
+                  placeholder: 'Небязательно заполнять', id: "floatingInput", class: "form-control" %>
+    <%= f.label :allergies_and_drug_intolerance, for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-4">
+    <%= f.text_field :medical_policy_number, autofocus: true, autocomplete: "Medical policy number", 
+                  placeholder: 'Небязательно заполнять', id: "floatingInput", class: "form-control" %>
+    <%= f.label :medical_policy_number, for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-4">
+    <%= f.text_field :verbal_portrait_and_special_features, autofocus: true, autocomplete: "Verbal portrait and special features", 
+                  placeholder: 'Небязательно заполнять', id: "floatingInput", class: "form-control" %>
+    <%= f.label :verbal_portrait_and_special_features, for: "floatingInput" %>
+  </div>
+  
   <div class='d-grid gap-2'>
     <%= f.submit 'Сохранить' , class: 'btn btn-secondary btn-block mb-4' %>
   </div>

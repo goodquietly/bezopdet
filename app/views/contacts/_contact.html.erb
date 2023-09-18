@@ -1,4 +1,4 @@
-<table class="table my-5 table-striped">
+<table class="table table-striped">
   <thead class="table-success">
     <tr>
       <th scope="col-3">Контакт</th>
@@ -12,7 +12,11 @@
       <tr>
         <td><%= t("activerecord.attributes.contact.role_list.#{contact.role}") %></td>
         <td><%= contact.full_name %></td>
-        <td><%= contact.phone_number %></td>
+        <td><%= contact.phone_number %>
+          <%= link_to icon('fa-solid', 'trash-can', class:"fa-sm", style: "color: #d60000;"), child_contact_path(contact.child, contact),
+                data: { turbo_method: :delete, turbo_confirm: 'Вы уверены, что хотите удалить этот контакт?'}, 
+                title: 'Удалить' %>
+        </td>
       </tr>
     <% end %>
 

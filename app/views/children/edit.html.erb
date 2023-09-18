@@ -1,13 +1,23 @@
-<div class="m-1 mb-4 rounded-3">
-  <div class="py-5 row text-center justify-content-center">
-    <div class="col-lg-6">
-      <div class="m-1 mb-4 rounded-3">
+<div class="m-1 rounded-3">
+  <div class="pt-3 text-center justify-content-center">
+    <h3 class='shadow p-3 bg-body rounded'>Редактирование данных ребенка</h3>
+    <div class='p-lg-5 pt-3'><%= render 'children/form' %></div>
+    <div class='row'>
+      <div class="m-1 py-3 col-lg rounded-3">
         <%= image_tag('create_child.jpg', class: 'img-fluid') %>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <h3 class='shadow p-3 mb-5 bg-body rounded'>Редактирование данных ребенка</h3>
-      <%= render 'form' %>
+      <div class='col-lg'>
+        <h3 class='shadow p-3 mt-3 mb-5 bg-body rounded text-center'>Контакты ребенка</h3>
+        <div class='px-md-5 mb-4'>
+
+          <% if @child.contacts.except(@new_contact).present? %>
+            <%= render partial: 'contacts/contact', locals: { child: @child, new_contact: @new_contact } %>
+          <% end %>
+
+        </div>
+        <h5 class='text-center'>Добавить новый контакт</h5>
+          <%= render 'contacts/form', contact: @new_contact || @child.contacts.build %>
+      </div>
     </div>
   </div>
 </div>

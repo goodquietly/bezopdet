@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
 
-    redirect_to child, notice: 'Контакт удален.'
+    redirect_back_or_to child, notice: 'Контакт удален.'
   end
 
   private
