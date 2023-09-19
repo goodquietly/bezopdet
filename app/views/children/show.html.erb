@@ -36,9 +36,17 @@
                 style="width: <%= child_protection(@child_programs) %>%"></div>
             </div>
             <div class="d-flex pt-1">
-              <%= link_to 'Сформировать паспорт безопасности', passport_child_path(@child, format: :pdf), 
+              <%= link_to 'Шаблон паспорта безопасности', passport_child_path(@child, format: :pdf), 
                     class: 'btn btn-outline-info flex-grow-1' %>
             </div>
+            
+            <% if policy(@child).interactive_passport? %>
+              <div class="d-flex pt-1">
+                <%= link_to 'Интерактивный паспорт безопасности', interactive_passport_child_path(@child, format: :pdf), 
+                      class: 'btn btn-outline-success flex-grow-1' %>
+              </div>
+            <% end %>
+              
           </div>
         </div>
       </div>

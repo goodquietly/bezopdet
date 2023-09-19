@@ -26,4 +26,8 @@ class ChildPolicy < ApplicationPolicy
   def passport?
     record.user == user
   end
+
+  def interactive_passport?
+    record.user == user && user.personal_data_policy_confirmed?
+  end
 end

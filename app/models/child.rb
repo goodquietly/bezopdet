@@ -18,7 +18,7 @@ class Child < ApplicationRecord
   validates :verbal_portrait_and_special_features, presence: true, allow_blank: true, length: { maximum: 255 }
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{patronymic} #{last_name}"
   end
 
   def age
@@ -33,6 +33,7 @@ class Child < ApplicationRecord
 
   def capitalize_name
     first_name&.capitalize!
+    patronymic&.capitalize!
     last_name&.capitalize!
   end
 end

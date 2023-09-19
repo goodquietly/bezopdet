@@ -1,0 +1,58 @@
+<div class="shadow bg-body p-2 text-center rounded">
+  <h5 class="text-primary fw-bold">Паспорт безопасности ребёнка</h5>
+  <h6>Сформирован: <%= l(Time.now, format: :long) %></h6>
+</div>
+<div class="pt-3 d-flex text-center justify-content-center">
+  <div class="p-2 w-50">
+    <h6 class="shadow p-1 mb-3 bg-body rounded text-primary fw-bold">Ваш ребёнок</h6>
+    <div class="card mb-3">
+      <div>
+        <h4 class="text-success fw-bold"><%= @child.full_name %></h4>
+        <p>Дата рождения:</p>
+        <p class='text-danger fw-bold'><%= "#{@child.birthday.strftime("%d-%m-%Y")} (#{@child.age_to_s})" %></p>
+      </div>
+      <div class="mb-1">
+        <h6 class='text-success fw-bold'>Номер медицинского полиса</h6>
+        <div class="text-danger"><%= @child.medical_policy_number %></div>
+      </div>
+    </div>
+  </div>
+  <div class="p-2 w-50">
+    <div class="flex-shrink-0">
+      <%= image_tag('passport.jpg', class: 'img-fluid') %>
+    </div>
+  </div>
+</div>
+<div class="mb-3">
+  <h6 class='text-success fw-bold'>Адрес места жительства</h6>
+  <div class="shadow p-2 bg-body rounded"><%= @child.residential_address %></div>
+</div>
+<div class="mb-3">
+  <h6 class='text-success fw-bold'>Аллергия и непереносимости лекарств</h6>
+  <div class="shadow p-2 bg-body rounded"><%= @child.allergies_and_drug_intolerance %></div>
+</div>
+<div class="mb-3">
+  <h6 class='text-success fw-bold'>Словестный портрет и особые приметы ребёнка</h6>
+  <div class="shadow p-2 bg-body rounded"><%= @child.verbal_portrait_and_special_features %></div>
+</div>
+<div class="container">
+  <h6 class="shadow p-1 my-3 bg-body rounded text-primary mx-auto fw-bold w-50 text-center justify-content-center">
+    Контакты ребенка
+  </h6>
+  <div class="row g-2">
+
+    <% @child.contacts.each do |contact| %>
+      <div class="col text-center h-100">
+        <div class="text-success fw-bold">
+          <%= t("activerecord.attributes.contact.role_list.#{contact.role}") %>
+        </div>
+        <ul class="list-group lh-sm">
+          <li class="list-group-item"><%= contact.full_name %></li>
+          <li class="list-group-item fw-bolder text-danger" style='font-size: 80%;'><%= contact.phone_number %></li>
+        </ul>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+<p class="mt-5 text-center"><b class="text-primary">@bezopdet</b> Самое крупное сообщество по детской безопасности</p>

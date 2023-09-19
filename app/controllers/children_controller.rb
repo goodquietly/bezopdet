@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :set_child, only: %i[edit update show destroy passport]
+  before_action :set_child, only: %i[edit update show destroy passport interactive_passport]
 
   def new
     @child = authorize Child.new(user: current_user)
@@ -56,6 +56,26 @@ class ChildrenController < ApplicationController
         relative_html = ChildrenController.new.render_to_string(
           {
             template: 'children/passport',
+            layout: 'pdf',
+            assigns: { child: @child }
+          }
+        )
+
+        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'http://213.139.211.121/', 'http'
+        pdf = Grover.new(absolute_html).to_pdf
+
+        send_data(pdf, filename: "Passport_#{@child.full_name}_#{Date.current}", type: 'application/pdf')
+      end
+    end
+  end
+
+  def interactive_passport
+    respond_to do |format|
+      format.html
+      format.pdf do
+        relative_html = ChildrenController.new.render_to_string(
+          {
+            template: 'children/interactive_passport',
             layout: 'pdf',
             assigns: { child: @child }
           }
