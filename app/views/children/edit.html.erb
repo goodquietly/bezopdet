@@ -7,22 +7,26 @@
         <%= link_to 'Вернуться в ЛК', child_path(@child), class: 'btn btn-warning mb-3' %>
       </div>
     </div>
-    <div class='row'>
-      <div class="m-1 py-3 col-lg rounded-3">
-        <%= image_tag('create_child.jpg', class: 'img-fluid') %>
-      </div>
-      <div class='col-lg'>
-        <h3 class='shadow p-3 mt-3 mb-5 bg-body rounded text-center'>Контакты ребенка</h3>
-        <div class='px-md-5 mb-4'>
 
-          <% if @child.contacts.except(@new_contact).present? %>
-            <%= render partial: 'contacts/contact', locals: { child: @child, new_contact: @new_contact } %>
-          <% end %>
-        
+    <% if @child.user.personal_data_policy_confirmed? %>
+      <div class='row'>
+        <div class="m-1 py-3 col-lg rounded-3">
+          <%= image_tag('create_child.jpg', class: 'img-fluid') %>
         </div>
-        <h5 class='text-center'>Добавить новый контакт</h5>
-          <%= render 'contacts/form', contact: @new_contact || @child.contacts.build %>
+        <div class='col-lg'>
+          <h3 class='shadow p-3 mt-3 mb-5 bg-body rounded text-center'>Контакты ребенка</h3>
+          <div class='px-md-5 mb-4'>
+          
+            <% if @child.contacts.except(@new_contact).present? %>
+              <%= render partial: 'contacts/contact', locals: { child: @child, new_contact: @new_contact } %>
+            <% end %>
+
+          </div>
+          <h5 class='text-center'>Добавить новый контакт</h5>
+            <%= render 'contacts/form', contact: @new_contact || @child.contacts.build %>
+        </div>
       </div>
-    </div>
+    <% end %>
+
   </div>
 </div>
