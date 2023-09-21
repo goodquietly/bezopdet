@@ -43,10 +43,18 @@ class ChildrenController < ApplicationController
 
   def destroy
     name = @child.full_name
-
     @child.destroy
 
     redirect_to root_path, notice: "#{name} - личный кабинет успешно удален!"
+  end
+
+  def index
+    authorize Child
+    @user_children ||= policy_scope(Child)
+    @user_child_programs = ChildProgram.where(child_id: @user_children&.ids)
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @notices = @user_child_programs
+               .where(notice_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 
   def passport

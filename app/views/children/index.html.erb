@@ -1,0 +1,63 @@
+<div class="m-1 mb-4 p-1 rounded-3">
+  <div class="pt-5 text-center justify-content-center">
+    <h3 class="shadow p-3 mb-5 bg-body rounded">«Безопасное детство – самое крупное сообщество на тему детской
+      безопасности»</h3>
+    <div class='row'>
+      <div class="col-md-6">
+        <div class="m-1 mb-5 rounded-3">
+          <%= image_tag('childs-2.jpg', class: 'img-fluid') %>
+        </div>
+
+        <% if @user_children.present? %>
+          <div class="shadow p-3 bg-body rounded mb-5">
+            <h4>Ваши дети</h4>
+          </div>
+          
+          <% @user_children.each do |child| %>
+            <%= link_to child_path(child), class: "link-dark" do %>
+              <div class="card border-secondary my-3 bg-warning">
+                <h5 class="card-title mt-2 fs-3"><%= child.first_name %>, <%= child.age_to_s %></h5>
+              </div>
+              <% end %>
+            <% end %>
+        <% end %>
+
+      </div>
+      <div class="col-md-6">
+        <div class="m-1 mb-4 rounded-3 pt-3 d-flex flex-column h-100">
+
+          <% unless user_signed_in? %>
+            <div class="shadow p-2 bg-body rounded mb-auto">
+              <h4>Создай индивидуальный план защиты своего ребенка!</h4>
+            </div>
+            <div><%= link_to 'Начать', new_user_registration_path, class: "btn btn-warning btn-lg my-3" %></div>
+          <% else %>
+            <h3 class="shadow p-3 mb-5 bg-body rounded">Календарь безопасности Ваших детей</h3>
+
+            <%= month_calendar(events: @notices) do |date, notices| %>
+              <div class='day'>
+                <%= date.day %>
+              </div>
+              <div class="list-group">
+                
+                <% notices.each do |notice| %>
+                  <%= link_to notice.start_time.strftime('%H:%M'), child_program_path(notice), 
+                      title: notice.training_program.title, 
+                      class: "list-group-item p-0 list-group-item-action list-group-item-#{random_bootstrap_colors}" %>
+                <% end %>
+
+              </div>
+            <% end %>
+
+            <div><%= link_to 'Создать ЛК ребенка', new_child_path, class: "btn btn-warning btn-lg my-3" %></div>
+          <% end %>
+
+          <div class='mt-auto mb-3'><%= link_to icon('fa-brands', 'telegram', class:"fa-2xl", style: "color: #2AABEE;"), 
+                                                'https://t.me/bezopdet', target: '_blanc' %>
+            <%= link_to icon('fa-brands', 'vk', class:"fa-2xl", style: "color: #4C75A3;"), 
+                                                'https://vk.com/public211013924', target: '_blanc' %></div>
+        </div>
+      </div>
+    <div>
+  </div>
+</div>
