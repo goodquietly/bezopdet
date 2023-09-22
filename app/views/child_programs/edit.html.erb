@@ -1,14 +1,17 @@
-<main>
-  <div class="m-1 mb-4 rounded-3">
-    <div class="py-5 row text-center justify-content-center">
-      <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @child_program.training_program.title %></h3>
-      <div class="col-lg-6 mb-5 align-content-center">
+<div class="m-1 mb-4 pt-5 rounded-3">
+  <div class="text-center justify-content-center">
+    <h3 class="shadow p-3 mb-5 bg-body rounded">Активность: <%= @child_program.training_program.title %></h3>
+    <div class="row">
+      <div class="col-lg-7 mb-5 align-content-center">
         <%= image_tag('clock.jpg', class: 'img-fluid') %>
       </div>
-      <div class="col-lg-6 d-flex text-center align-content-center flex-wrap justify-content-center">
-        <h3 class="shadow p-3 mb-5 bg-body rounded text-center">Ребенок: <%= @child_program.child.full_name %></h3>
-        <h4 class='text-success'>Задайте параметры, чтобы запланировать ознакомление с активностью в указанное время</h4>
-        <div class="w-100">
+      <div class="col-lg-5 d-flex text-center align-content-center flex-wrap justify-content-center">
+        <h3 class="shadow p-3 mb-5 mx-auto w-100 bg-body rounded">Ребенок: <%= link_to @child_program.child.full_name, 
+            child_path(@child_program.child), class: "list-group-item list-group-item-action active link-warning" %>
+        </h3>
+        <h4 class='text-success'>Задайте параметры, чтобы запланировать ознакомление с активностью в указанное время
+        </h4>
+        <div class="w-100 pb-4">
 
           <%= render "form", child_program: @child_program %>
 
@@ -19,4 +22,4 @@
       </div>
     </div>
   </div>
-</main>
+</div>
