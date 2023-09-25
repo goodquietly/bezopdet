@@ -74,23 +74,29 @@
 
     </div>
   </div>
-  <div class='container'>
-    <h3 class='shadow p-3 my-5 mx-auto w-auto bg-body rounded text-center'>Методики и другие активности</h3>
-    <div class="row rounded-3 justify-content-center">       
+  <h3 class='shadow p-3 my-5 mx-auto w-auto bg-body rounded text-center'>Методики и другие активности</h3>    
+  <div class="row">
+      
+    <% @child_programs.map do |program| %>
+      <div class="col-md-6 p-2">
+          <% if program.training_program.pdf.representable? %>
 
-        <% @child_programs.map do |program| %>
-          <div class="col-md-6 my-4">
-            <div class="p-1 text-bg-<%= background_color(program) %> rounded-3">
-            
-              <% if program.training_program.pdf.representable? %>
-                <%= link_to image_tag(program.training_program.pdf.representation(resize_to_limit: [800, 600]), 
-                                  class: 'img-fluid w-100'), child_program_path(program) %>
-              <% end %>
+            <%= link_to child_program_path(program), class: 'list-group-item list-group-item-action link-light' do %>
+              <div class="card p-2 bg-<%= background_color(program) %> rounded-3">
+                  <% image = program.training_program.pdf.representation(crop: [100, 300, 450, 250], 
+                  format: :jpeg) %>
+                  <%= image_tag image, class: 'card-img-top' %>
+                  <div class='card-body'>
+                    <h4 class='card-title text-center fw-bold'><%= program.training_program.title %>
+                      </h4>
+                  </div>
+              </div>
+            <% end %>
 
-            </div>
-          </div>
-        <% end %>
+          <% end %>
 
-    </div>
+      </div>
+    <% end %>
+    
   </div>
 </div>

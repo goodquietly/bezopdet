@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-lg-7 mb-5">
         <% if @child_program.training_program.pdf.representable? %>
-        <%= link_to image_tag(@child_program.training_program.pdf.representation(resize_to_limit: [800, 600]), 
-                            class: "img-fluid p-3 text-bg-#{background_color(@child_program)}"), 
+          <%= link_to image_tag(@child_program.training_program.pdf.representation(resize_to_limit: [800, 600]), 
+                            class: "img-fluid rounded p-2 text-bg-#{background_color(@child_program)}"), 
                             url_for(@child_program.training_program.pdf), target: '_blank' %>
         <% end %>
       </div>
