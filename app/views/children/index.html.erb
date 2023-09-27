@@ -32,8 +32,11 @@
             </div>
             <div><%= link_to 'Начать', new_user_registration_path, class: "btn btn-warning btn-lg my-3" %></div>
           <% else %>
-            <h3 class="shadow p-3 mb-5 bg-body rounded">Календарь безопасности Ваших детей</h3>
-
+            <h3 class="shadow p-3 bg-body rounded">Календарь безопасности Ваших детей</h3>
+            <div class="mb-3">
+              <%= render 'partials/telegram' %>
+            </div>
+            
             <%= month_calendar(events: @notices) do |date, notices| %>
               <div class='day'>
                 <%= date.day %>

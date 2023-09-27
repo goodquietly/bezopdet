@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => 'admin/sidekiq'
   end
 
+  get "telegram_auth", to: "telegram#telegram_auth"
+  post "telegram_auth", to: "telegram#telegram_auth"
+  delete "telegram_destroy", to: "telegram#telegram_destroy"
   get '/pages/:page' => 'pages#show'
 
   root 'children#index'

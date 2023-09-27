@@ -26,69 +26,78 @@
 
               <%= render "devise/shared/error_messages", resource: resource %>
 
-            <div class="form-floating mb-3">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", 
-                  placeholder: 'Введите email', id: "floatingInput", class: "form-control" %>
-              <%= f.label :email, for: "floatingInput" %>
-            </div>
+              <div class="form-floating mb-3">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+                    placeholder: 'Введите email', id: "floatingInput", class: "form-control" %>
+                <%= f.label :email, for: "floatingInput" %>
+              </div>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
-            <% end %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+              <% end %>
 
-            <div class="form-check form-switch mb-3">
-              <%= f.label :subscribed, for: "flexSwitchCheckChecked", class: "form-check-label" %> 
-              <%= f.check_box :subscribed, class: "form-check-input", id: "flexSwitchCheckChecked" %>
-            </div>
+              <div class="form-check form-switch mb-3">
+                <%= f.label :subscribed, for: "flexSwitchCheckChecked", class: "form-check-label" %> 
+                <%= f.check_box :subscribed, class: "form-check-input", id: "flexSwitchCheckChecked" %>
+              </div>
 
-            <div class="form-check form-switch mb-3">
-              <%= f.label :personal_data_policy_confirmed, 
-                  "Согласен с #{link_to('политикой обработки персональных данных', '/pages/policy',
-                  target: '_blank')}".html_safe, for: "flexSwitchCheckChecked2", class: "form-check-label" %> 
-              <%= f.check_box :personal_data_policy_confirmed, class: "form-check-input", 
-                  id: "flexSwitchCheckChecked2" %>
-            </div>
+              <div class="form-check form-switch mb-3">
+                <%= f.label :personal_data_policy_confirmed, 
+                    "Согласен с #{link_to('политикой обработки персональных данных', '/pages/policy',
+                    target: '_blank')}".html_safe, for: "flexSwitchCheckChecked2", class: "form-check-label" %> 
+                <%= f.check_box :personal_data_policy_confirmed, class: "form-check-input", 
+                    id: "flexSwitchCheckChecked2" %>
+              </div>
 
-            <div class="form-floating mb-3">              
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", 
-                   id: "floatingPassword", placeholder: 'Пароль (6 знаков минимум)' %>
-                   <%= f.label :password, for: "floatingPassword"%>  
-                   <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-            </div>
+              <div class="form-floating mb-3">              
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", 
+                     id: "floatingPassword", placeholder: 'Пароль (6 знаков минимум)' %>
+                     <%= f.label :password, for: "floatingPassword"%>  
+                     <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+              </div>
 
-            <div class="form-floating mb-3">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", 
-                class: "form-control", id: "floatingPassword", 
-                placeholder: 'Пароль (6 знаков минимум)' %>
-              <%= f.label :password_confirmation, for: "floatingPassword" %>
-            </div>
+              <div class="form-floating mb-3">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", 
+                  class: "form-control", id: "floatingPassword", 
+                  placeholder: 'Пароль (6 знаков минимум)' %>
+                <%= f.label :password_confirmation, for: "floatingPassword" %>
+              </div>
 
-            <div class="form-floating mb-3">
-              <%= f.password_field :current_password, class: "form-control", id: "floatingPassword", 
-                  placeholder: 'Введите пароль' %>
-              <%= f.label :current_password, for: "floatingPassword" %>  
-                  <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-            </div>
+              <div class="form-floating mb-3">
+                <%= f.password_field :current_password, class: "form-control", id: "floatingPassword", 
+                    placeholder: 'Введите пароль' %>
+                <%= f.label :current_password, for: "floatingPassword" %>  
+                    <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+              </div>
 
-            <div class='d-grid gap-2'>
-              <%= f.submit t('.update'), class: 'btn btn-secondary btn-block mb-4' %>
-            </div>
-            <% end %>
+              <div class='d-grid gap-2'>
+                <%= f.submit t('.update'), class: 'btn btn-secondary btn-block mb-4' %>
+              </div>
+              <% end %>
 
-            <h3><%= t('.cancel_my_account') %></h3>
-            <p><%= t('.unhappy') %></p>
-            <div class='d-grid gap-2'>
-              <%= link_to t('.cancel_my_account'), registration_path(resource_name), 
-                class: "btn btn-secondary btn-block mb-4", 
-                data: { turbo_method: :delete, turbo_confirm: t('.are_you_sure')} %>
-              <%= link_to "Назад", :back, class: "btn btn-primary btn-block mb-4" %> 
+              <% if current_user.telegram_id.present? %>
+                <div class='d-grid gap-2'>
+                   <%= link_to "Отключить Telegram уведомления", telegram_destroy_path,
+                       class: 'btn btn-info btn-block mb-4',
+                       data: { turbo_method: :delete, turbo_confirm: t('.are_you_sure')} %>
+                </div> 
+              <% end %>
+              
+              <h3><%= t('.cancel_my_account') %></h3>
+              <p><%= t('.unhappy') %></p>
+              <div class='d-grid gap-2'>
+                <%= link_to t('.cancel_my_account'), registration_path(resource_name), 
+                  class: "btn btn-secondary btn-block mb-4", 
+                  data: { turbo_method: :delete, turbo_confirm: t('.are_you_sure')} %>
+                <%= link_to "Назад", :back, class: "btn btn-primary btn-block mb-4" %> 
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <%= image_tag('sign_up.jpg', class: 'img-fluid w-100 rounded-4 shadow-4') %>
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <%= image_tag('sign_up.jpg', class: 'img-fluid w-100 rounded-4 shadow-4') %>
+        </div>
       </div>
     </div>
   </div>

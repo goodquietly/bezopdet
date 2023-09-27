@@ -1,0 +1,10 @@
+<% if current_user.telegram_id.nil? %> 
+  <h6>Подписаться на уведомления TELEGRAM<h6>
+  <script async src="https://telegram.org/js/telegram-widget.js?22"
+                data-telegram-login="bezopdet_bot"
+                data-size="medium"
+                data-radius="5"
+                data-auth-url="<%= url_for(controller: "telegram", action: 'telegram_auth') %>"
+                data-request-access="write">
+  </script>
+<% end %>
