@@ -18,7 +18,7 @@
     Пусть ваш ребёнок всегда будет в безопасности!
   </p>
   <p class="text-gray-700 mt-3">
-    Активность создана <b class="text-red-500"><%= l(@program.training_program.created_at, format: :short)%></b>
+    Активность создана <b class="text-red-500"><%= @program.training_program.created_at.strftime("%d-%m-%Y") %></b>
   </p>
   <p class="text-gray-700">
     <%= link_to 'Личный кабинет', child_url(@program.child), target: "_blank" %>

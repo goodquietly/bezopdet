@@ -11,14 +11,47 @@ class TelegramMailer < ApplicationMailer
     )
   end
 
-  def private_message(text, user) 
+  def notice_time(program) 
+    @program = program
+
     HTTParty.post("https://api.telegram.org/bot#{ENV['TELEGRAM']}/sendMessage",
       headers: {
         'Content-Type' => 'application/json'
       },
       body: {
-        chat_id: user.telegram_id,
-        text: text
+        chat_id: program.child.user.telegram_id,
+        parse_mode: 'HTML',
+        text: (render 'notice_time')
+      }.to_json
+    )
+  end
+
+  def new_training_program(program)
+    @program = program
+
+    HTTParty.post("https://api.telegram.org/bot#{ENV['TELEGRAM']}/sendMessage",
+      headers: {
+        'Content-Type' => 'application/json'
+      },
+      body: {
+        chat_id: program.child.user.telegram_id,
+        parse_mode: 'HTML',
+        text: (render 'new_training_program')
+      }.to_json
+    )
+  end
+
+  def repeat_training_program(program)
+    @program = program
+
+    HTTParty.post("https://api.telegram.org/bot#{ENV['TELEGRAM']}/sendMessage",
+      headers: {
+        'Content-Type' => 'application/json'
+      },
+      body: {
+        chat_id: program.child.user.telegram_id,
+        parse_mode: 'HTML',
+        text: (render 'repeat_training_program')
       }.to_json
     )
   end
