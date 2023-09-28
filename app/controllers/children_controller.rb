@@ -9,7 +9,7 @@ class ChildrenController < ApplicationController
     @child = authorize Child.new(child_params)
 
     if @child.save
-      ChildProgramBuilderService.call(@child)
+      NewChildrenProgramsCreatorService.call(@child)
       if @child.user.personal_data_policy_confirmed?
         return redirect_to edit_child_path(@child),
                            notice: "#{@child.full_name} - личный кабинет успешно сформирован, теперь можете добавить

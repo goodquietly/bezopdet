@@ -21,12 +21,12 @@ class Child < ApplicationRecord
     "#{first_name} #{patronymic} #{last_name}"
   end
 
-  def age
-    (Time.now.to_fs(:number).to_i - birthday.to_time.to_fs(:number).to_i) / 10e9.to_i
-  end
-
   def age_to_s
     I18n.t('activerecord.models.age', count: age)
+  end
+
+  def telegram_present?
+    user.telegram_id.present?
   end
 
   private
@@ -35,5 +35,9 @@ class Child < ApplicationRecord
     first_name&.capitalize!
     patronymic&.capitalize!
     last_name&.capitalize!
+  end
+
+  def age
+    (Time.now.to_fs(:number).to_i - birthday.to_time.to_fs(:number).to_i) / 10e9.to_i
   end
 end

@@ -9,4 +9,12 @@ class ChildProgram < ApplicationRecord
   def start_time
     notice_time
   end
+  
+  def user_subscribed?
+    child.user.subscribed?
+  end
+
+  def telegram_present?
+    child.user.telegram_id.present?
+  end
 end
