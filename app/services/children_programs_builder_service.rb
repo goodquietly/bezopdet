@@ -4,9 +4,14 @@ class ChildrenProgramsBuilderService < ApplicationService
   end
 
   def call
+    build_children_programs
+  end
+
+  private
+
+  def build_children_programs
     Child.find_each do |child|
       next ChildProgram.destroy_by(child_id: child.id, training_program_id: @training_program.id) unless @training_program.published?
-
       program = ChildProgram.find_or_create_by(child_id: child.id, training_program_id: @training_program.id)
 
       next unless child.user.subscribed?
