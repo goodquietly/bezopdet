@@ -29,7 +29,6 @@ gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'redis'
-gem 'rubocop', require: false
 gem 'russian_phone'
 gem 'sassc-rails'
 gem 'sidekiq', '~> 6.5.5'
@@ -50,4 +49,6 @@ group :development, :test do
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-sidekiq'
   gem 'letter_opener'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end

@@ -14,7 +14,7 @@ class ChildrenProgramsBuilderService < ApplicationService
   def build_children_programs
     Child.find_each do |child|
       unless @training_program.published?
-        next ChildProgram.destroy_by(child_id: child.id,
+        next ChildProgram.destroy_by(child_id:            child.id,
                                      training_program_id: @training_program.id)
       end
 

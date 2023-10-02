@@ -1,0 +1,84 @@
+AllCops:
+  TargetRubyVersion: 3.1.2
+  NewCops: enable
+  SuggestExtensions:
+    rubocop-sequel: true
+    rubocop-rspec: true
+  Exclude:
+    - 'migrate'
+    - '.env.rb'
+    - 'db//*'
+    - 'config//*'
+    - 'bin//*'
+    - 'Gemfile'
+    - 'vendor//*'
+
+# Offense count: 3
+Metrics/AbcSize:
+  Max: 25
+
+Lint/DuplicateHashKey:
+  Exclude:
+
+# Offense count: 2
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 60
+  Exclude:
+
+Metrics/ModuleLength:
+  Max: 100
+  Exclude:
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+
+# Offense count: 57
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Layout/LineLength:
+  Max: 150
+  Exclude:
+
+# Offense count: 3
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+
+# Offense count: 26
+Style/Documentation:
+  Enabled: false
+
+Style/RedundantSelf:
+  Exclude:
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/Lambda:
+  Exclude:
+
+Lint/AssignmentInCondition:
+  Exclude:
+
+Layout/IndentationConsistency:
+  Exclude:
+
+Style/RedundantFileExtensionInRequire:
+  Exclude:
+    - 'db.rb'
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Lint:
+  Enabled: false

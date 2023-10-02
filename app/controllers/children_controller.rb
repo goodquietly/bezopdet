@@ -66,8 +66,8 @@ class ChildrenController < ApplicationController
         relative_html = ChildrenController.new.render_to_string(
           {
             template: 'children/passport',
-            layout: 'pdf',
-            assigns: { child: @child }
+            layout:   'pdf',
+            assigns:  { child: @child }
           }
         )
 
@@ -86,8 +86,8 @@ class ChildrenController < ApplicationController
         relative_html = ChildrenController.new.render_to_string(
           {
             template: 'children/interactive_passport',
-            layout: 'pdf',
-            assigns: { child: @child }
+            layout:   'pdf',
+            assigns:  { child: @child }
           }
         )
 

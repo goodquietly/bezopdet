@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def child_protection(programs)
-    return programs.where(completed: true).size.* 100 / programs.size if programs.present?
+    return programs.where(completed: true).size * 100 / programs.size if programs.present?
 
     0
   end
