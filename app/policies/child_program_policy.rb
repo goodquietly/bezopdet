@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChildProgramPolicy < ApplicationPolicy
   def edit?
     update?

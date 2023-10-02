@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeviseMailer < Devise::Mailer
   default from: ENV['MAIL_SENDER']
   layout 'mailer'

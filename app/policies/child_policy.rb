@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChildPolicy < ApplicationPolicy
   def show?
     record.user == user

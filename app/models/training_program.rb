@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TrainingProgram < ApplicationRecord
   has_many :child_programs, dependent: :destroy
   has_many :children, through: :child_programs

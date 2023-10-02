@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChildProgram < ApplicationRecord
   validates :completed, inclusion: [true, false]
 
@@ -9,7 +11,7 @@ class ChildProgram < ApplicationRecord
   def start_time
     notice_time
   end
-  
+
   def user_subscribed?
     child.user.subscribed?
   end

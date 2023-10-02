@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChildProgramsController < ApplicationController
   before_action :set_child_program
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register TrainingProgram do
   permit_params :title, :pdf, :published
 

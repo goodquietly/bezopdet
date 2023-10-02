@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   AdminUser.create!(email: ENV['EMAIL_DEV'], password: ENV['EMAIL_DEV_PASS'],
                     password_confirmation: ENV['EMAIL_DEV_PASS'])

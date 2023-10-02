@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactPolicy < ApplicationPolicy
   def create?
     user == record.child.user && user.personal_data_policy_confirmed?

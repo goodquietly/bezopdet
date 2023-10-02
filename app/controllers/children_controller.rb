@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChildrenController < ApplicationController
   before_action :set_child, only: %i[edit update show destroy passport interactive_passport]
 

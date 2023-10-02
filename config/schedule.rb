@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :output, 'log/cron.log'
 set :env_path, '"$HOME/.rbenv/shims":"$HOME/.rbenv/bin"'
 
@@ -7,9 +9,9 @@ job_type :runner, %q( cd :path && PATH=:env_path:"$PATH" bin/rails runner -e :en
 job_type :script, ' cd :path && PATH=:env_path:"$PATH" RAILS_ENV=:environment bundle exec bin/:task :output '
 
 every 1.day, at: '08:00 am' do
-  runner 'RepeatTrainingProgramJob.perform_async'  
+  runner 'RepeatTrainingProgramJob.perform_async'
 end
 
 every 1.day, at: '08:10 am' do
-  runner 'NoticeTimeJob.perform_async'  
+  runner 'NoticeTimeJob.perform_async'
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Child < ApplicationRecord
   before_save :capitalize_name
 
