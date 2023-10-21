@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   root 'children#index'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions:           'users/sessions',
+    registrations:      'users/registrations'
+  }
 
   resources :children do
     resources :contacts, only: %i[create destroy]
