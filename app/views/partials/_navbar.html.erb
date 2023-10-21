@@ -1,49 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">Главная</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Главная</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
       aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to current_user.email, edit_user_registration_path, class: "nav-link active", 
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to current_user.email, edit_user_registration_path, class: "nav-link active", 
                                                               aria: { current: "page" } %>
-          </li>          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              ЛК ребенка
-            </a>
-            <ul class="dropdown-menu">
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+                                                                         aria-expanded="false">
+                ЛК ребенка
+              </a>
+              <ul class="dropdown-menu">
 
-              <% current_user.children.each do |child| %>
-              <li><%= link_to child.first_name, child_path(child), class: "dropdown-item" %></li>
-              <% end %>
-              
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><%= link_to 'Добавить ребенка', new_child_path, class: "dropdown-item" %></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Выйти", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, 
+                <% current_user.children.each do |child| %>
+                  <li><%= link_to child.first_name, child_path(child), class: "dropdown-item" %></li>
+                <% end %>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><%= link_to 'Добавить ребенка', new_child_path, class: "dropdown-item" %></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Выйти", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, 
                                                                  class: "nav-link active", 
                                                                  aria: { current: "page" } %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Войти", new_user_session_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-        <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link active", 
+                                                                            aria: { current: "page" } %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Войти", new_user_session_path, class: "nav-link active", aria: { current: "page" } %>
+            </li>
+          <% end %>
 
-      </ul>
-    </div>    
-  </div>
-</nav>
+        </ul>
+      </div>
+    </div>
+  </nav>
