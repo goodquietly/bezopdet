@@ -33,7 +33,7 @@ console:
 server:
 	RAILS_ENV=development bundle exec rails server
 
-sidekiq:
+sidek:
 	RAILS_ENV=development bundle exec sidekiq
 
 rubocop-all:
