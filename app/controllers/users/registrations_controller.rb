@@ -70,7 +70,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def update_resource(resource, params)
-    byebug
     if resource.last_sign_in_by == 'email'
       resource.update_with_password(params)
     else
