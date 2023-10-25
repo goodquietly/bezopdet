@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :child_programs do
     member do
       put 'complete'
+      post 'add_to_google_calendar'
     end
   end
 end

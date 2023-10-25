@@ -1,30 +1,37 @@
-<div class="card text-center m-3">
-  <div class="card-header">
-    <div class="d-grid gap-2">
+  <div class="card text-center m-3">
+    <div class="card-header">
+      <div class="d-grid gap-2">
 
-      <% if policy(child_program).complete? %>
-      <%= link_to 'Выполнено!', complete_child_program_path(child_program), class: 'btn btn-warning m-2', 
+        <% if policy(child_program).complete? %>
+          <%= link_to 'Выполнено!', complete_child_program_path(child_program), class: 'btn btn-warning m-2', 
                            data: { turbo_method: :put, turbo_confirm: "Вы уверены, что методика усвоена?"} %>
-      <% else %>
-        <p class='text-success mb-0'>Активность изучена: <%= l(child_program.completed_at, format: :long) %></p>
-      <% end %>
+        <% else %>
+          <p class='text-success mb-0'>Активность изучена: <%= l(child_program.completed_at, format: :long) %></p>
+        <% end %>
 
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-text"><b>Напоминание: </b>
+
+        <% unless child_program.notice_time.nil? %>
+          <p class='text-danger my-3'><%= l(child_program.notice_time, format: :long) %></p>
+          <b>Добавить в Google Calendar: </b>
+          <%= form_for "Login",
+                        url: add_to_google_calendar_child_program_path(child_program), 
+                        class: 'mt-3',
+                        data: {turbo_confirm: "Уверены, что хотите добавить напоминание в Google Calendar?"} do |f| %>
+            <%= f.submit "Login", type: "image", src: url_for("/assets/icons8-google-calendar-48.png") %>
+          <% end %>
+        <% else %>
+          Не установлено
+        <% end %>
+
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="d-grid gap-2">
+        <%= link_to "Установить напоминание", edit_child_program_path(@child_program), class: 'btn btn-info m-2' %>
+      </div>
     </div>
   </div>
-  <div class="card-body">
-    <div class="card-text"><b>Напоминание: </b>
-
-      <% unless child_program.notice_time.nil? %>
-        <p class='text-danger mb-0'><%= l(child_program.notice_time, format: :long) %></p>
-      <% else %>
-        Не установлено
-      <% end %>
-
-    </div>
-  </div>
-  <div class="card-footer">
-    <div class="d-grid gap-2">
-      <%= link_to "Установить напоминание", edit_child_program_path(@child_program), class: 'btn btn-info m-2' %>
-    </div>
-  </div>
-</div>

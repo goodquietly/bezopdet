@@ -13,6 +13,10 @@ class ChildProgramPolicy < ApplicationPolicy
     user == record.child.user
   end
 
+  def add_to_google_calendar?
+    user == record.child.user && record.notice_time.present?
+  end
+
   def complete?
     user == record.child.user && !record.completed?
   end
