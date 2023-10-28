@@ -369,6 +369,10 @@ GEM
     rails-i18n (7.0.6)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_real_favicon (0.1.1)
+      json (>= 1.7, < 3)
+      rails
+      rubyzip (~> 2)
     railties (7.0.4.3)
       actionpack (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -424,6 +428,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     russian_phone (0.7.0)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -521,6 +526,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-i18n (~> 7.0.0)
+  rails_real_favicon
   redis
   rubocop
   rubocop-rails

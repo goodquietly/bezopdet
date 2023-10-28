@@ -51,6 +51,7 @@ group :development, :test do
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-sidekiq'
   gem 'letter_opener'
+  gem 'rails_real_favicon'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 end
