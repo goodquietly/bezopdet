@@ -71,7 +71,7 @@ class ChildrenController < ApplicationController
           }
         )
 
-        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'http://213.139.211.121/', 'http'
+        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'https://bezopdet-planning.ru/', 'http'
         pdf = Grover.new(absolute_html).to_pdf
 
         send_data(pdf, filename: "Passport_#{@child.full_name}_#{Date.current}", type: 'application/pdf')
@@ -91,7 +91,7 @@ class ChildrenController < ApplicationController
           }
         )
 
-        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'http://213.139.211.121/', 'http'
+        absolute_html = Grover::HTMLPreprocessor.process relative_html, 'https://bezopdet-planning.ru/', 'http'
         pdf = Grover.new(absolute_html).to_pdf
 
         send_data(pdf, filename: "Passport_#{@child.full_name}_#{Date.current}", type: 'application/pdf')
