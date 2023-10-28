@@ -23,12 +23,19 @@ class ChildProgramsController < ApplicationController
 
   def add_to_google_calendar
     client = get_google_calendar_client(current_user)
-    event = get_event(@child_program)
-    client.insert_event('primary', event)
-    redirect_back_or_to child_program_path(@child_program), notice: 'Уведомление добавлено в Google Calendar!'
+    if client.nil?
+      redirect_back_or_to child_program_path(@child_program),
+                          alert: 'Для добавления события в Ваш Google Calendar авторизуйтесь с помощью Вашей учетной
+                                  записи Google!'
+    else
+      event = get_event(@child_program)
+      client.insert_event('primary', event)
+      redirect_back_or_to child_program_path(@child_program), notice: 'Событие добавлено в Ваш Google Calendar!'
+    end
   rescue Google::Apis::AuthorizationError
-    flash[:alert] = 'Возникла ошибка при добавлении уведомления в Google Calendar. Авторизуйтесь еще
-                               раз с помощью Google и повторите попытку.'
+    redirect_back_or_to child_program_path(@child_program),
+                        alert: 'Возникла ошибка при добавлении усобытия в Ваш Google Calendar. Авторизуйтесь еще
+                               раз с помощью Вашей учетной записи Google и повторите попытку.'
   end
 
   def complete
