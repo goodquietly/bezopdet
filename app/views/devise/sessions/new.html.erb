@@ -1,3 +1,4 @@
+  
   <section class="mx-auto">
     <div class="h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -45,7 +46,7 @@
                           url: omniauth_authorize_path(resource_name, provider), 
                           method: :post,
                           data: {turbo: "false"} do |f| %>
-                    <%= f.submit "Login", type: "image", src: url_for("/assets/web_light_sq_SI@1x.png") %>
+                    <%= f.submit "Login", type: "image", src: image_path("web_light_sq_SI@1x.png") %>
                   <% end %>
                 <% end %>
               </div>
