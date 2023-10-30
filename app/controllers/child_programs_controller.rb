@@ -84,7 +84,7 @@ class ChildProgramsController < ApplicationController
 
   def get_event(child_program)
     Google::Apis::CalendarV3::Event.new(
-      summary:               "Изучение активности с #{child_program.child.last_name}",
+      summary:               "Изучение активности с #{child_program.child.full_name}",
       description:           "Запланировано изучение активности: '#{child_program.training_program.title}'",
       start:                 {
         date_time: child_program.notice_time.to_fs(:iso8601),
