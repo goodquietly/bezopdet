@@ -2,7 +2,6 @@
 
 class ChildProgram < ApplicationRecord
   validates :completed, inclusion: [true, false]
-
   validates :notice_time, comparison: { greater_than: Date.current }, on: :update
 
   belongs_to :child
